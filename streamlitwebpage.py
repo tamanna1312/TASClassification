@@ -10,6 +10,7 @@ import numpy as np
 import joblib
 from tensorflow.keras.models import load_model
 
+# st.title('Geochemical Data Rock Label Predictor')
 # Load the trained model and the scaler
 model = load_model('TASClassification.h5')
 sc = joblib.load('scaler.pkl')
@@ -19,7 +20,7 @@ sc = joblib.load('scaler.pkl')
 #                  14: 'Trachybasalt', 15: 'Trachydacite', 16: 'Trachyte'
 #                 }  
 
-# st.title('Geochemical Data Rock Label Predictor')
+
 
 # # Function to load and preprocess the uploaded data
 # def load_data(uploaded_file):
