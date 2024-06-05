@@ -11,7 +11,7 @@ st.title('Geochemical Data Rock Label Predictor')
 @st.cache(allow_output_mutation=True)
 def load_results():
     # Load the precomputed predictions
-    results = pd.read_csv('results/predicted_results.csv')
+    results = pd.read_csv('predicted_results.csv')
     return results
 
 results = load_results()
