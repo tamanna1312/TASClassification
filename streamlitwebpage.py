@@ -14,8 +14,8 @@ st.title('Geochemical Data Rock Label Predictor')
 # 
 def load_models():
     # Load the models with compile=False
-    model = load_model('models/TASClassification.h5', compile=False)
-    scaler = joblib.load('models/scaler.pkl')
+    model = load_model('TASClassification.h5', compile=False)
+    scaler = joblib.load('scaler.pkl')
     return model, scaler
 
 # Load the models
