@@ -12,7 +12,7 @@ from tensorflow.keras.models import load_model
 
 st.title('Geochemical Data Rock Label Predictor')
 # Load the trained model and the scaler
-model = load_model('TASClassification.h5')
+# model = load_model('TASClassification.h5')
 sc = joblib.load('scaler.pkl')
 
 # label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basaltic Trachyandesite', 4: 'Basanite', 5:'Dacite', 6: 'Foidite', 7: 'Phonolite',
