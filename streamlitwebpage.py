@@ -19,7 +19,7 @@ results = load_results()
 # Button to show results
 if st.button('Show Predictions'):
     # Display the DataFrame with the inverse-transformed features and predictions
-    st.write("### Inverse-Transformed Features with Predictions")
+    st.write("Data with Predicted Rock Types")
     st.dataframe(results)
 else:
     st.write("Click the button to display the predictions.")
