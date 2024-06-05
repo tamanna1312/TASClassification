@@ -9,17 +9,19 @@ import pandas as pd
 import numpy as np
 import joblib
 from tensorflow.keras.models import load_model
+import tensorflow as tf
 
 st.title('Geochemical Data Rock Label Predictor')
 # 
-def load_models():
-    # Load the models with compile=False
-    model = load_model('TASClassification.h5', compile=False)
-    scaler = joblib.load('scaler.pkl')
-    return model, scaler
+# def load_models():
+#     # Load the models with compile=False
+#     model = load_model('TASClassification.h5', compile=False)
+#     scaler = joblib.load('scaler.pkl')
+#     return model, scaler
 
-# Load the models
-model, scaler = load_models()
+# # Load the models
+# model, scaler = load_models()
+model = tf.keras.models.load_model('TASClassification.h5')
 
 # label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basaltic Trachyandesite', 4: 'Basanite', 5:'Dacite', 6: 'Foidite', 7: 'Phonolite',
 #                  8: 'Phonotephrite', 9: 'Picrobasalt', 10: 'Rhyolite', 11: 'Tephriphonolite', 12: 'Tephrite', 13: 'Trachyandesite',
