@@ -11,8 +11,8 @@ import joblib
 from tensorflow.keras.models import load_model
 
 # Load the trained model and the scaler
-model = load_model('model/TASClassification.h5')
-sc = joblib.load('model/scaler.pkl')
+model = load_model('TASClassification.h5')
+sc = joblib.load('scaler.pkl')
 
 label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basaltic Trachyandesite', 4: 'Basanite', 5:'Dacite', 6: 'Foidite', 7: 'Phonolite',
                  8: 'Phonotephrite', 9: 'Picrobasalt', 10: 'Rhyolite', 11: 'Tephriphonolite', 12: 'Tephrite', 13: 'Trachyandesite',
