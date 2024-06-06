@@ -22,5 +22,5 @@ if st.button('Upload Data'):
     st.write("Data with Predicted Rock Types")
     st.dataframe(results)
 else:
-    st.write("Click the button to display the predictions.")
+    st.write("Click the button to upload your data.")
 
