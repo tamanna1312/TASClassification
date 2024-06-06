@@ -21,6 +21,6 @@ if st.button('Upload Data'):
     # Display the DataFrame with the inverse-transformed features and predictions
     st.write("Data with Predicted Rock Types")
     st.dataframe(results)
-# else:
-#     st.write("Click the button to display the predictions.")
+else:
+    st.write("Click the button to display the predictions.")
 
