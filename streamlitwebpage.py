@@ -49,6 +49,11 @@ def arrange_columns(data, case):
     
     return data[column_order]
 
+label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanite', 4:'Dacite',
+                 5: 'Foidite', 6: 'Phonolite', 7: 'Phonotephrite', 8: 'Picrobasalt', 
+                 9: 'Rhyolite', 10: 'Tephrite', 11: 'Trachyandesite', 12: 'Trachybasalt', 
+                 13: 'Trachydacite', 14: 'Trachyte'}
+
 
 case = st.selectbox(
     "Select the case:",
@@ -85,9 +90,10 @@ normalized_data = normalize_data(arranged_data, case)
 if st.button("Predict Rock Type"):
     predictions = model.predict(normalized_data)
     predicted_labels = np.argmax(predictions, axis=1)  # Assuming a classification task with multiple classes
-    data['Predicted_Rock_Type'] = predicted_labels
+    predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
+    arranged_data['Predicted_Rock_Type'] = predicted_rock_types
     st.write("Predictions:")
-    st.write(data)
+    st.write(arranged_data)
 
 # Step 4: Allow the user to download the new CSV file
     csv = data.to_csv(index=False)
