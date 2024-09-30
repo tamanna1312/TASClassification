@@ -69,9 +69,14 @@ if uploaded_file:
 
     st.write("Data with Columns Rearranged:")
     st.write(arranged_data.head())
+    
+model_path = 'fine_tuned_model.h5'  # Path to the pre-saved model file
+model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
 
-    # Load the model based on selected case
-    model = load_model_for_case(case)
+st.write("Model loaded from disk!")
+
+    # # Load the model based on selected case
+    # model = load_model_for_case(case)
 
     # Normalize the data based on the selected case
     normalized_data = normalize_data(arranged_data, case)
