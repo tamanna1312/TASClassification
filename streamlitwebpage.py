@@ -97,7 +97,7 @@ if st.button("Predict Rock Type"):
     st.write(arranged_data)
 
     csv = data.to_csv(index=False)
-    st.download_button(label="Download Predicted Data as CSV",
+    st.download_button(label="Download Predicted rock type file as csv",
                            data=csv,
                            file_name='predicted_rock_types.csv',
                            mime='text/csv')
