@@ -36,6 +36,20 @@ def normalize_data(data, case):
     normalized_data = scaler.fit_transform(features)
     return normalized_data
 
+def arrange_columns(data, case):
+    if case == 'Case 1 - All Oxides':
+        # Specify the exact column order for Case 1
+        column_order = ['SiO2', 'Al2O3', 'FeO', 'MgO', 'CaO', 'Na2O', 'K2O', 'TiO2', 'MnO', 'P2O5']
+    elif case == 'Case 2 - No SiO2':
+        # Specify the exact column order for Case 2
+        column_order = ['Al2O3', 'FeO', 'MgO', 'CaO', 'Na2O', 'K2O', 'TiO2', 'MnO', 'P2O5']
+    elif case == 'Case 3 - No Alkali Oxides':
+        # Specify the exact column order for Case 3
+        column_order = ['SiO2', 'Al2O3', 'FeO', 'MgO', 'CaO', 'TiO2', 'MnO', 'P2O5']
+    
+    return data[column_order]
+
+
 case = st.selectbox(
     "Select the case:",
     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
@@ -45,16 +59,22 @@ case = st.selectbox(
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
 if uploaded_file:
+    # Read the CSV file
     data = pd.read_csv(uploaded_file)
     st.write("Uploaded Data:")
     st.write(data.head())
 
+    # Rearrange the columns based on the model's training data
+    arranged_data = arrange_columns(data, case)
 
- # Load the model based on selected case
+    st.write("Data with Columns Rearranged:")
+    st.write(arranged_data.head())
+
+    # Load the model based on selected case
     model = load_model_for_case(case)
 
     # Normalize the data based on the selected case
-    normalized_data = normalize_data(data, case)
+    normalized_data = normalize_data(arranged_data, case)
 
     # Step 3: Make predictions
     if st.button("Predict Rock Type"):
