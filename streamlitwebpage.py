@@ -15,24 +15,29 @@ st.title('TAS Rock Classifier')
 
 def load_model_for_case(case):
     if case == 'Case 1 - All Oxides':
-        return load_model('fine_tuned_model.h5')
+        return load_model('fine_tuned_model.h5', custom_objects={'LeakyReLU': LeakyReLU})
     elif case == 'Case 2 - No SiO2':
-        return load_model('model_case_2.h5')
+        return load_model('model_case_2.h5', custom_objects={'LeakyReLU': LeakyReLU})
     elif case == 'Case 3 - No Alkali Oxides':
-        return load_model('model_case_3.h5')
+        return load_model('model_case_3.h5', custom_objects={'LeakyReLU': LeakyReLU})
 
 
+# def normalize_data(data, case):
+#     scaler = StandardScaler()
+#     # Depending on the case, exclude certain columns for normalization
+#     if case == 'Case 1 - All Oxides':
+#         features = data  
+#     elif case == 'Case 2 - No SiO2':
+#         features = data.drop(columns=['SiO2'])
+#     elif case == 'Case 3 - No Alkali Oxides':
+#         features = data.drop(columns=['Na2O', 'K2O'])
+
+
+#     normalized_data = scaler.fit_transform(features)
+#     return normalized_data
 def normalize_data(data, case):
     scaler = StandardScaler()
-    # Depending on the case, exclude certain columns for normalization
-    if case == 'Case 1 - All Oxides':
-        features = data  
-    elif case == 'Case 2 - No SiO2':
-        features = data.drop(columns=['SiO2'])
-    elif case == 'Case 3 - No Alkali Oxides':
-        features = data.drop(columns=['Na2O', 'K2O'])
-
-
+    features = data  # Since data for each case is already arranged appropriately.
     normalized_data = scaler.fit_transform(features)
     return normalized_data
 
@@ -75,8 +80,8 @@ if uploaded_file:
     st.write("Data with Columns Rearranged:")
     st.write(arranged_data.head())
     
-model_path = 'fine_tuned_model.h5'  # Path to the pre-saved model file
-model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
+# model_path = 'fine_tuned_model.h5'  
+# model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
 
 # st.write("Model loaded from disk!")
 
