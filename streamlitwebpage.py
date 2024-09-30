@@ -42,10 +42,10 @@ def arrange_columns(data, case):
         column_order = ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2']
     elif case == 'Case 2 - No SiO2':
         # Specify the exact column order for Case 2
-        column_order = ['Al2O3', 'FeO', 'MgO', 'CaO', 'Na2O', 'K2O', 'TiO2', 'MnO', 'P2O5']
+        column_order = ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2']
     elif case == 'Case 3 - No Alkali Oxides':
         # Specify the exact column order for Case 3
-        column_order = ['SiO2', 'Al2O3', 'FeO', 'MgO', 'CaO', 'TiO2', 'MnO', 'P2O5']
+        column_order = ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)']
     
     return data[column_order]
 
@@ -78,7 +78,7 @@ if uploaded_file:
 model_path = 'fine_tuned_model.h5'  # Path to the pre-saved model file
 model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
 
-st.write("Model loaded from disk!")
+# st.write("Model loaded from disk!")
 
     # # Load the model based on selected case
     # model = load_model_for_case(case)
