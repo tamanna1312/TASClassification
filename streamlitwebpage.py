@@ -78,8 +78,8 @@ st.write("Model loaded from disk!")
     # # Load the model based on selected case
     # model = load_model_for_case(case)
 
-    # Normalize the data based on the selected case
-    normalized_data = normalize_data(arranged_data, case)
+# Normalize the data based on the selected case
+normalized_data = normalize_data(arranged_data, case)
 
     # Step 3: Make predictions
     if st.button("Predict Rock Type"):
