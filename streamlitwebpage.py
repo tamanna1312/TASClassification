@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[ ]:
-
+#importing the necessary libraries.
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -10,9 +10,10 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import LeakyReLU  
 from sklearn.preprocessing import StandardScaler
 
-
+#title of the app.
 st.title('TAS Rock Classifier')
 
+#loading the model for the 3 cases.
 def load_model_for_case(case):
     if case == 'Case 1 - All Oxides':
         return load_model('fine_tuned_model.h5', custom_objects={'LeakyReLU': LeakyReLU})
@@ -31,16 +32,17 @@ def load_model_for_case(case):
 #         features = data.drop(columns=['SiO2'])
 #     elif case == 'Case 3 - No Alkali Oxides':
 #         features = data.drop(columns=['Na2O', 'K2O'])
-
-
 #     normalized_data = scaler.fit_transform(features)
 #     return normalized_data
+
+#normalising the data
 def normalize_data(data, case):
     scaler = StandardScaler()
     features = data  # Since data for each case is already arranged appropriately.
     normalized_data = scaler.fit_transform(features)
     return normalized_data
-
+    
+#arranging the columns of the test data in the same way as that of training data.
 def arrange_columns(data, case):
     if case == 'Case 1 - All Oxides':
         # Specify the exact column order for Case 1
@@ -54,6 +56,8 @@ def arrange_columns(data, case):
     
     return data[column_order]
 
+
+#mapping key.
 label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanite', 4:'Dacite',
                  5: 'Foidite', 6: 'Phonolite', 7: 'Phonotephrite', 8: 'Picrobasalt', 
                  9: 'Rhyolite', 10: 'Tephrite', 11: 'Trachyandesite', 12: 'Trachybasalt', 
@@ -65,25 +69,21 @@ case = st.selectbox(
     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
 )
 
-# Step 2: Upload the CSV file with user data
+#uploading the test data
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
 if uploaded_file:
-    # Read the CSV file
     data = pd.read_csv(uploaded_file)
     st.write("Uploaded Data:")
     st.write(data.head())
 
     # Rearrange the columns based on the model's training data
     arranged_data = arrange_columns(data, case)
-
-    st.write("Data with Columns Rearranged:")
-    st.write(arranged_data.head())
+    # st.write("Data with Columns Rearranged:")
+    # st.write(arranged_data.head())
     
 # model_path = 'fine_tuned_model.h5'  
 # model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
-
-# st.write("Model loaded from disk!")
 
     model = load_model_for_case(case)
     st.write(f"Model for {case} loaded successfully!")
@@ -91,21 +91,36 @@ if uploaded_file:
 # Normalize the data based on the selected case
     normalized_data = normalize_data(arranged_data, case)
 
-# Step 3: Make predictions
+
 if st.button("Predict Rock Type"):
     predictions = model.predict(normalized_data)
     predicted_labels = np.argmax(predictions, axis=1)  # Assuming a classification task with multiple classes
     predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
     arranged_data['Predicted_Rock_Type'] = predicted_rock_types
-    st.write("Predictions:")
     st.write(arranged_data)
 
-# Step 4: Allow the user to download the new CSV file
     csv = data.to_csv(index=False)
     st.download_button(label="Download Predicted Data as CSV",
                            data=csv,
                            file_name='predicted_rock_types.csv',
                            mime='text/csv')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # # @st.cache(allow_output_mutation=True)
 # # def load_results():
