@@ -85,9 +85,9 @@ if uploaded_file:
 
 # st.write("Model loaded from disk!")
 
-    # # Load the model based on selected case
-    # model = load_model_for_case(case)
-
+    model = load_model_for_case(case)
+    st.write(f"Model for {case} loaded successfully!")
+    
 # Normalize the data based on the selected case
     normalized_data = normalize_data(arranged_data, case)
 
