@@ -81,20 +81,20 @@ st.write("Model loaded from disk!")
 # Normalize the data based on the selected case
 normalized_data = normalize_data(arranged_data, case)
 
-    # Step 3: Make predictions
-    if st.button("Predict Rock Type"):
-        predictions = model.predict(normalized_data)
-        predicted_labels = np.argmax(predictions, axis=1)  # Assuming a classification task with multiple classes
-        data['Predicted_Rock_Type'] = predicted_labels
-        st.write("Predictions:")
-        st.write(data)
+    # # Step 3: Make predictions
+    # if st.button("Predict Rock Type"):
+    #     predictions = model.predict(normalized_data)
+    #     predicted_labels = np.argmax(predictions, axis=1)  # Assuming a classification task with multiple classes
+    #     data['Predicted_Rock_Type'] = predicted_labels
+    #     st.write("Predictions:")
+    #     st.write(data)
 
-        # Step 4: Allow the user to download the new CSV file
-        csv = data.to_csv(index=False)
-        st.download_button(label="Download Predicted Data as CSV",
-                           data=csv,
-                           file_name='predicted_rock_types.csv',
-                           mime='text/csv')
+    #     # Step 4: Allow the user to download the new CSV file
+    #     csv = data.to_csv(index=False)
+    #     st.download_button(label="Download Predicted Data as CSV",
+    #                        data=csv,
+    #                        file_name='predicted_rock_types.csv',
+    #                        mime='text/csv')
 
 # # @st.cache(allow_output_mutation=True)
 # # def load_results():
