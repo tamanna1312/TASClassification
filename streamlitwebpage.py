@@ -15,7 +15,7 @@ st.title('TAS Rock Classifier')
 
 def load_model_for_case(case):
     if case == 'Case 1 - All Oxides':
-        return load_model('model_case_1.h5')
+        return load_model('fine_tuned_model.h5')
     elif case == 'Case 2 - No SiO2':
         return load_model('model_case_2.h5')
     elif case == 'Case 3 - No Alkali Oxides':
