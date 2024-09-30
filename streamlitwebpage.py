@@ -27,7 +27,7 @@ def load_model_for_case(case):
 #     results = pd.read_csv('predicted_results.csv')
 #     return results
 
-results = load_results()
+# results = load_results()
 
 # Button to show results
 if st.button('Upload Data'):
