@@ -7,8 +7,8 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from tensorflow.keras.models import load_model
+from tensorflow.keras.layers import LeakyReLU  
 from sklearn.preprocessing import StandardScaler
-import io
 
 
 st.title('TAS Rock Classifier')
