@@ -89,7 +89,7 @@ if uploaded_file:
     # model = load_model_for_case(case)
 
 # Normalize the data based on the selected case
-normalized_data = normalize_data(arranged_data, case)
+    normalized_data = normalize_data(arranged_data, case)
 
 # Step 3: Make predictions
 if st.button("Predict Rock Type"):
