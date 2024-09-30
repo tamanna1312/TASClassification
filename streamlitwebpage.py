@@ -36,22 +36,19 @@ def load_model_for_case(case):
 #     return normalized_data
 
 #normalising the data
-def normalize_data(data, case):
+def normalise_data(data, case):
     scaler = StandardScaler()
-    features = data  # Since data for each case is already arranged appropriately.
-    normalized_data = scaler.fit_transform(features)
-    return normalized_data
+    features = data
+    normalised_data = scaler.fit_transform(features)
+    return normalised_data
     
 #arranging the columns of the test data in the same way as that of training data.
 def arrange_columns(data, case):
     if case == 'Case 1 - All Oxides':
-        # Specify the exact column order for Case 1
         column_order = ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2']
     elif case == 'Case 2 - No SiO2':
-        # Specify the exact column order for Case 2
         column_order = ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2']
     elif case == 'Case 3 - No Alkali Oxides':
-        # Specify the exact column order for Case 3
         column_order = ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)']
     
     return data[column_order]
@@ -89,12 +86,12 @@ if uploaded_file:
     st.write(f"Model for {case} loaded successfully!")
     
 # Normalize the data based on the selected case
-    normalized_data = normalize_data(arranged_data, case)
+    normalised_data = normalise_data(arranged_data, case)
 
 
 if st.button("Predict Rock Type"):
-    predictions = model.predict(normalized_data)
-    predicted_labels = np.argmax(predictions, axis=1)  # Assuming a classification task with multiple classes
+    predictions = model.predict(normalised_data)
+    predicted_labels = np.argmax(predictions, axis=1)  
     predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
     arranged_data['Predicted_Rock_Type'] = predicted_rock_types
     st.write(arranged_data)
