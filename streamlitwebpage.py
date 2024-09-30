@@ -35,7 +35,7 @@ def load_model_for_case(case):
 #     normalized_data = scaler.fit_transform(features)
 #     return normalized_data
 
-#normalising the data
+#normalising the data.
 def normalise_data(data, case):
     scaler = StandardScaler()
     features = data
@@ -66,15 +66,13 @@ case = st.selectbox(
     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
 )
 
-#uploading the test data
+#uploading the test data.
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 
 if uploaded_file:
     data = pd.read_csv(uploaded_file)
     st.write("Uploaded Data:")
     st.write(data.head())
-
-    # Rearrange the columns based on the model's training data
     arranged_data = arrange_columns(data, case)
     # st.write("Data with Columns Rearranged:")
     # st.write(arranged_data.head())
@@ -84,8 +82,6 @@ if uploaded_file:
 
     model = load_model_for_case(case)
     st.write(f"Model for {case} loaded successfully!")
-    
-# Normalize the data based on the selected case
     normalised_data = normalise_data(arranged_data, case)
 
 
