@@ -152,7 +152,7 @@ if 'data' in locals():
     normalised_data = normalise_data(arranged_data, case)
 
     if st.button("Predict Rock Type"):
-        predictions = model.predict(normalized_data)
+        predictions = model.predict(normalised_data)
         predicted_labels = np.argmax(predictions, axis=1)  
         predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
         arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)  # Insert at the first column
