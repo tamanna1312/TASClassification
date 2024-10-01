@@ -149,7 +149,7 @@ if 'data' in locals():
     arranged_data = arrange_columns(data, case)
     model = load_model_for_case(case)
     st.write(f"Model for {case} loaded successfully!")
-    normalized_data = normalize_data(arranged_data, case)
+    normalised_data = normalise_data(arranged_data, case)
 
     if st.button("Predict Rock Type"):
         predictions = model.predict(normalized_data)
