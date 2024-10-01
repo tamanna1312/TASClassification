@@ -78,7 +78,26 @@ def TAS(ax,fontsize=8):
                     horizontalalignment='center', verticalalignment='top',
                     rotation=name.rotation, zorder=2,
                     bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2')) 
-
+rock_colors = {
+    'Rhyolite': 'y',
+    'Basalt': 'r',
+    'Andesite': 'b',
+    'Dacite': 'g',
+    'Basanite': 'm',
+    'Trachyte': 'c',
+    'Tephrite': 'brown',
+    'Phonolite': 'gray',
+    'Phonotephrite': 'pink',
+    'Trachybasalt': 'purple',
+    'Trachyandesite': 'brown',
+    'Basaltic Andesite': '#FFA500',
+    'Picrobasalt': 'y',
+    'Tephri-Phonolite': 'r',
+    'Basaltic Trachyandesite': 'm',
+    'Foidite': 'y',
+    'Foidite 2': 'y',
+    'Trachy-Dacite': '#FFA500',
+}
 
 # def normalize_data(data, case):
 #     scaler = StandardScaler()
@@ -164,7 +183,6 @@ if 'data' in locals():
                            file_name='predicted_rock_types.csv',
                            mime='text/csv')
 
-        # TAS Plot
         if case == 'Case 1 - All Oxides':
             fig, ax = plt.subplots(figsize=(8, 6))
             TAS(ax)
@@ -172,9 +190,10 @@ if 'data' in locals():
             ax.set_ylim([0, 16])
             ax.set_xlabel('SiO2 (wt%)')
             ax.set_ylabel('Na2O + K2O (wt%)')
+            for rock_type in rock_colors.keys():
+                rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+                ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 'o', c=rock_colors[rock_type], markersize=2, label=rock_type)
 
-            # Plotting the SiO2 vs Na2O+K2O
-            ax.scatter(arranged_data['SiO2(wt%)'], arranged_data['Na2O+K2O'], c='red')
             ax.legend()
             st.pyplot(fig)
 
