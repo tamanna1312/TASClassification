@@ -174,7 +174,7 @@ if 'data' in locals():
             ax.set_ylabel('Na2O + K2O (wt%)')
 
             # Plotting the SiO2 vs Na2O+K2O
-            ax.scatter(arranged_data['SiO2(wt%)'], arranged_data['Na2O+K2O'], c='red', label="Predicted Rocks")
+            ax.scatter(arranged_data['SiO2(wt%)'], arranged_data['Na2O+K2O'], c='red')
             ax.legend()
             st.pyplot(fig)
 
