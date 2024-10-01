@@ -83,35 +83,53 @@ case = st.radio(
 
 #uploading the test data.
 uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
-
-if uploaded_file:
-    data = pd.read_csv(uploaded_file)
-    st.write("Uploaded Data:")
-    st.write(data.head())
+if data is not None:
     arranged_data = arrange_columns(data, case)
-    # st.write("Data with Columns Rearranged:")
-    # st.write(arranged_data.head())
-    
-# model_path = 'fine_tuned_model.h5'  
-# model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
-
     model = load_model_for_case(case)
-    st.write(f"Model for {case} loaded successfully!")
-    normalised_data = normalise_data(arranged_data, case)
+    normalised_data = normalize_data(arranged_data, case)
+    
+    if st.button("Predict Rock Type"):
+        predictions = model.predict(normalised_data)
+        predicted_labels = np.argmax(predictions, axis=1)
+        predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
+
+        # Add the predicted rock type as the first column
+        arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)
+
+        st.write(arranged_data)
+
+        # Download the result as CSV
+        csv = arranged_data.to_csv(index=False)
+        st.download_button(label="Download CSV with predicted rock types", data=csv, file_name='predicted_rock_types.csv', mime='text/csv')
+
+# if uploaded_file:
+#     data = pd.read_csv(uploaded_file)
+#     st.write("Uploaded Data:")
+#     st.write(data.head())
+#     arranged_data = arrange_columns(data, case)
+#     # st.write("Data with Columns Rearranged:")
+#     # st.write(arranged_data.head())
+    
+# # model_path = 'fine_tuned_model.h5'  
+# # model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
+
+#     model = load_model_for_case(case)
+#     st.write(f"Model for {case} loaded successfully!")
+#     normalised_data = normalise_data(arranged_data, case)
 
 
-if st.button("Predict Rock Type"):
-    predictions = model.predict(normalised_data)
-    predicted_labels = np.argmax(predictions, axis=1)  
-    predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
-    arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)
-    st.write(arranged_data)
+# if st.button("Predict Rock Type"):
+#     predictions = model.predict(normalised_data)
+#     predicted_labels = np.argmax(predictions, axis=1)  
+#     predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
+#     arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)
+#     st.write(arranged_data)
 
-    csv = data.to_csv(index=False)
-    st.download_button(label="Download Predicted rock type file as csv",
-                           data=csv,
-                           file_name='predicted_rock_types.csv',
-                           mime='text/csv')
+#     csv = data.to_csv(index=False)
+#     st.download_button(label="Download Predicted rock type file as csv",
+#                            data=csv,
+#                            file_name='predicted_rock_types.csv',
+#                            mime='text/csv')
 
 
 
