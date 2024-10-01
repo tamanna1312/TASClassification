@@ -192,12 +192,22 @@ if 'data' in locals():
             ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
             ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
             ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
-            for rock_type in rock_colors.keys():
+            for rock_type, color in rock_colors.items():
                 rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
-                ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 'o', c=rock_colors[rock_type], markersize=2)
+                if not rock_data.empty:  # Check if there is data to plot
+                    ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 
+                    'o', c=color, markersize=2, label=rock_type)
 
             ax.legend()
             st.pyplot(fig)
+            # for rock_type in rock_colors.keys():
+            #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+            #     ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 'o', c=rock_colors[rock_type], markersize=2)
+
+            # ax.legend()
+            # st.pyplot(fig)
+# Loop through the unique predicted rock types and plot them with corresponding colors
+            
 
 
 
