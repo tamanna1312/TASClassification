@@ -61,7 +61,8 @@ label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanit
                  13: 'Trachydacite', 14: 'Trachyte'}
 
 
-case = st.selectbox(
+
+case = st.radio(
     "Select the case:",
     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
 )
@@ -89,7 +90,7 @@ if st.button("Predict Rock Type"):
     predictions = model.predict(normalised_data)
     predicted_labels = np.argmax(predictions, axis=1)  
     predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
-    arranged_data['Predicted_Rock_Type'] = predicted_rock_types
+    arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)
     st.write(arranged_data)
 
     csv = data.to_csv(index=False)
