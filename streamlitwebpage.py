@@ -216,7 +216,7 @@ if 'data' in locals():
                 rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
                 ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], 
                    label=rock_type, zorder=1, s=2)  # Adjust 's' for marker size
-        ax.legend(title='Rock Types', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
+        # ax.legend(title='Rock Types', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
         st.pyplot(fig)
             # for rock_type, color in rock_colors.items():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
