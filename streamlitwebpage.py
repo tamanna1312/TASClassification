@@ -70,7 +70,7 @@ if data_option == 'Upload your data':
     if uploaded_file:
         data = pd.read_csv(uploaded_file)
 else:
-    data = pd.read_csv(test_data_path)
+    data = pd.read_csv(TestFineTuned.csv)
     st.write("Using test data:")
     st.write(data.head())
 
