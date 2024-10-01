@@ -60,6 +60,20 @@ label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanit
                  9: 'Rhyolite', 10: 'Tephrite', 11: 'Trachyandesite', 12: 'Trachybasalt', 
                  13: 'Trachydacite', 14: 'Trachyte'}
 
+data_option = st.radio(
+    "Select the data source:",
+    ('Upload your data', 'Use test data')
+)
+
+if data_option == 'Upload your data':
+    uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+    if uploaded_file:
+        data = pd.read_csv(uploaded_file)
+else:
+    data = pd.read_csv(test_data_path)
+    st.write("Using test data:")
+    st.write(data.head())
+
 
 
 case = st.radio(
