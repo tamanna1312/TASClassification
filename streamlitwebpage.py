@@ -98,6 +98,25 @@ rock_colors = {
     'Foidite 2': 'y',
     'Trachy-Dacite': '#FFA500',
 }
+tas_coordinates = {
+    'Picrobasalt': (43, 2),
+    'Basalt': (48.5, 2),
+    'Basaltic Andesite': (54.5, 3.9),
+    'Andesite': (60, 2),
+    'Dacite': (68.5, 2),
+    'Rhyolite': (75.5, 6.5),
+    'Trachyte': (64.5, 12.5),
+    'Trachydacite': (64.7, 9.5),
+    'Phonotephrite': (49, 9.9),
+    'Tephriphonolite': (53.0, 12.1),
+    'Phonolite': (57.5, 14.5),
+    'Tephrite': (45, 7.3),
+    'Foidite': (44, 11.5),
+    'Basanite': (43, 4.5),
+    'Trachybasalt' : (49, 6.2),
+    'Basaltictrachyandesite': (53, 8), 
+    'Trachyandesite': (57.2, 9)
+}
 
 # def normalize_data(data, case):
 #     scaler = StandardScaler()
@@ -192,14 +211,21 @@ if 'data' in locals():
             ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
             ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
             ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
-            for rock_type, color in rock_colors.items():
-                rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
-                if not rock_data.empty:  # Check if there is data to plot
-                    ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 
-                    'o', c=color, markersize=2, label=rock_type)
-
+            for index, row in arranged_data.iterrows():
+                rock_type = row['Predicted_Rock_Type']
+                if rock_type in tas_coordinates:
+                    sio2, na2o_k2o = tas_coordinates[rock_type]
+                    ax.plot(sio2, na2o_k2o, 'o', markersize=5, label=rock_type)
             ax.legend()
             st.pyplot(fig)
+            # for rock_type, color in rock_colors.items():
+            #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+            #     if not rock_data.empty:  # Check if there is data to plot
+            #         ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 
+            #         'o', c=color, markersize=2, label=rock_type)
+
+            # ax.legend()
+            # st.pyplot(fig)
             # for rock_type in rock_colors.keys():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
             #     ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 'o', c=rock_colors[rock_type], markersize=2)
