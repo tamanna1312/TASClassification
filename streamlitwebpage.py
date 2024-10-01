@@ -82,7 +82,7 @@ case = st.radio(
 )
 
 #uploading the test data.
-uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+uploaded_file = st.file_uploader("Upload your CSV file",type=["csv"], key="file_uploader_key")
 if data is not None:
     arranged_data = arrange_columns(data, case)
     model = load_model_for_case(case)
