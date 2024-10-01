@@ -91,7 +91,7 @@ rock_colors = {
     'Trachybasalt': 'purple',
     'Trachyandesite': 'brown',
     'Basaltic Andesite': '#FFA500',
-    'Picrobasalt': 'y',
+    'Picrobasalt': 'black',
     'Tephri-Phonolite': 'r',
     'Basaltic Trachyandesite': 'm',
     'Foidite': 'y',
