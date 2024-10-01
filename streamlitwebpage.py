@@ -86,7 +86,7 @@ uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
 if data is not None:
     arranged_data = arrange_columns(data, case)
     model = load_model_for_case(case)
-    normalised_data = normalize_data(arranged_data, case)
+    normalised_data = normalise_data(arranged_data, case)
     
     if st.button("Predict Rock Type"):
         predictions = model.predict(normalised_data)
