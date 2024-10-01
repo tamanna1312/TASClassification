@@ -77,7 +77,7 @@ def TAS(ax,fontsize=8):
         ax.text(name.x, name.y, name.name, color='black', size=13,
                     horizontalalignment='center', verticalalignment='top',
                     rotation=name.rotation, zorder=2,
-                    bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2')) plt.figure(figsize=(8, 6))
+                    bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2')) 
 
 
 # def normalize_data(data, case):
