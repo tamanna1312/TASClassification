@@ -125,7 +125,7 @@ if use_test_data:
     st.write("Using test data:")
     # st.write(data.head())
 else:
-    uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"])
+    uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"], key="file_uploader_key")
     if uploaded_file:
         data = pd.read_csv(uploaded_file)
         st.write("Uploaded Data:")
@@ -138,12 +138,12 @@ case = st.radio(
     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
 )
 
-#uploading the test data.
-uploaded_file = st.file_uploader("Upload your CSV file",type=["csv"], key="file_uploader_key")
-if uploaded_file:
-        data = pd.read_csv(uploaded_file)
-        st.write("Uploaded Data:")
-        st.write(data.head())
+# #uploading the test data.
+# uploaded_file = st.file_uploader("Upload your CSV file",type=["csv"], key="file_uploader_key")
+# if uploaded_file:
+#         data = pd.read_csv(uploaded_file)
+#         st.write("Uploaded Data:")
+#         st.write(data.head())
 
 if 'data' in locals():
     arranged_data = arrange_columns(data, case)
