@@ -211,14 +211,13 @@ if 'data' in locals():
             ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
             ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
             ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
-            rock_counts = arranged_data['Predicted_Rock_Type'].value_counts()
-            for rock_type, count in rock_counts.items():
-                if rock_type in tas_coordinates:
-                    sio2, na2o_k2o = tas_coordinates[rock_type]
-                    ax.text(sio2, na2o_k2o, str(count), fontsize=10, ha='center', va='center',
-                    bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
-
-            st.pyplot(fig)
+            for rock_type in tas_coordinates.keys():
+                sio2, na2o_k2o = tas_coordinates[rock_type]
+                rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+                ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], 
+                   label=rock_type, zorder=1, s=2)  # Adjust 's' for marker size
+        ax.legend(title='Rock Types', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
+        st.pyplot(fig)
             # for rock_type, color in rock_colors.items():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
             #     if not rock_data.empty:  # Check if there is data to plot
@@ -233,7 +232,14 @@ if 'data' in locals():
 
             # ax.legend()
             # st.pyplot(fig)
-# Loop through the unique predicted rock types and plot them with corresponding colors
+ # CASE 2/3 - rock_counts = arranged_data['Predicted_Rock_Type'].value_counts()
+ #            for rock_type, count in rock_counts.items():
+ #                if rock_type in tas_coordinates:
+ #                    sio2, na2o_k2o = tas_coordinates[rock_type]
+ #                    ax.text(sio2, na2o_k2o, str(count), fontsize=10, ha='center', va='center',
+ #                    bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
+
+ #            st.pyplot(fig)
             
 
 
