@@ -129,6 +129,17 @@ tas_coordinates = {
 #         features = data.drop(columns=['Na2O', 'K2O'])
 #     normalized_data = scaler.fit_transform(features)
 #     return normalized_data
+case_column_requirements = {
+    'Case 1 - All Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O'],
+    'Case 2 - No SiO2': ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O'],
+    'Case 3 - No Alkali Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)']
+}
+def validate_columns(data, case):
+    required_columns = case_column_requirements[case]
+    missing_columns = [col for col in required_columns if col not in data.columns]
+    if missing_columns:
+        return False, missing_columns
+    return True, None
 
 #normalising the data.
 def normalise_data(data, case):
