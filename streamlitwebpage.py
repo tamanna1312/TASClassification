@@ -179,56 +179,59 @@ else:
         data = pd.read_csv(uploaded_file)
         st.write("Uploaded Data:")
         st.write(data.head())
+# case = st.radio(
+#     "Select the case:",
+#     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
+# )
 
 
-
-case = st.radio(
-    "Select the case:",
-    ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
-)
-
-# #uploading the test data.
-# uploaded_file = st.file_uploader("Upload your CSV file",type=["csv"], key="file_uploader_key")
-# if uploaded_file:
-#         data = pd.read_csv(uploaded_file)
-#         st.write("Uploaded Data:")
-#         st.write(data.head())
-
+# if 'data' in locals():
+#     arranged_data = arrange_columns(data, case)
+#     model = load_model_for_case(case)
+#     st.write(f"Model for {case} loaded successfully!")
+#     normalised_data = normalise_data(arranged_data, case)
 if 'data' in locals():
-    arranged_data = arrange_columns(data, case)
-    model = load_model_for_case(case)
-    st.write(f"Model for {case} loaded successfully!")
-    normalised_data = normalise_data(arranged_data, case)
+    case = st.radio(
+        "Select the case:",
+        ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
+    )
+    is_valid, missing_cols = validate_columns(data, case)
+    if not is_valid:
+        st.error(f"Missing required columns: {', '.join(missing_cols)}")
+    else:
+        arranged_data = arrange_columns(data, case)
+        model = load_model_for_case(case)
+        st.write(f"Model for {case} loaded successfully!")
+        normalised_data = normalise_data(arranged_data, case)
 
-    if st.button("Predict Rock Type"):
-        predictions = model.predict(normalised_data)
-        predicted_labels = np.argmax(predictions, axis=1)  
-        predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
-        arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)  # Insert at the first column
-        st.write(arranged_data)
+        if st.button("Predict Rock Type"):
+            predictions = model.predict(normalised_data)
+            predicted_labels = np.argmax(predictions, axis=1)  
+            predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
+            arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)  # Insert at the first column
+            st.write(arranged_data)
 
-        csv = arranged_data.to_csv(index=False)
-        st.download_button(label="Download Predicted rock type file as CSV",
+            csv = arranged_data.to_csv(index=False)
+            st.download_button(label="Download Predicted rock type file as CSV",
                            data=csv,
                            file_name='predicted_rock_types.csv',
                            mime='text/csv')
 
-        if case == 'Case 1 - All Oxides':
-            fig, ax = plt.subplots(figsize=(8, 6))
-            TAS(ax)
-            ax.set_xlim([40, 80])
-            ax.set_ylim([0, 16])
-            ax.set_xlabel(r'SiO$_2$ (wt%)')
-            ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
-            ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
-            ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
-            for rock_type in tas_coordinates.keys():
-                sio2, na2o_k2o = tas_coordinates[rock_type]
-                rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
-                ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], 
-                   label=rock_type, zorder=1, s=2)  # Adjust 's' for marker size
+            if case == 'Case 1 - All Oxides':
+                fig, ax = plt.subplots(figsize=(8, 6))
+                TAS(ax)
+                ax.set_xlim([40, 80])
+                ax.set_ylim([0, 16])
+                ax.set_xlabel(r'SiO$_2$ (wt%)')
+                ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
+                ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
+                ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
+                for rock_type in tas_coordinates.keys():
+                    sio2, na2o_k2o = tas_coordinates[rock_type]
+                    rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+                    ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], label=rock_type, zorder=1, s=2)  
         # ax.legend(title='Rock Types', bbox_to_anchor=(1.05, 1), loc='upper left', fontsize=8)
-        st.pyplot(fig)
+                st.pyplot(fig)
             # for rock_type, color in rock_colors.items():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
             #     if not rock_data.empty:  # Check if there is data to plot
