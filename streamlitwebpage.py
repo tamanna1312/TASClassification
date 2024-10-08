@@ -182,25 +182,22 @@ else:
 if 'data' in locals():
     case_options = ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
 
-    # Create columns for horizontal alignment
-    cols = st.columns(len(case_options))
-    case = None
+    # Display the radio buttons horizontally
+    case = st.radio(
+        "Select the case:",
+        case_options,
+        index=0,  # default selection
+        horizontal=True
+    )
 
-    for i, option in enumerate(case_options):
-        with cols[i]:
-            if st.radio("", [option], key=option):  # Use an empty label for the radio button
-                case = option
-
-    if case is not None:
-        is_valid, missing_cols = validate_columns(data, case)
-        if not is_valid:
-            st.error(f"Missing required columns: {', '.join(missing_cols)}")
-        else:
-            arranged_data = arrange_columns(data, case)
-            model = load_model_for_case(case)
-            st.write(f"Model for {case} loaded successfully!")
-            normalised_data = normalise_data(arranged_data, case)
-
+    is_valid, missing_cols = validate_columns(data, case)
+    if not is_valid:
+        st.error(f"Missing required columns: {', '.join(missing_cols)}")
+    else:
+        arranged_data = arrange_columns(data, case)
+        model = load_model_for_case(case)
+        st.write(f"Model for {case} loaded successfully!")
+        normalised_data = normalise_data(arranged_data, case)
 # if 'data' in locals():
 #     # Adding CSS for horizontal radio buttons
 #     st.markdown(
