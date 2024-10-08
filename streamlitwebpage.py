@@ -198,8 +198,6 @@ if 'data' in locals():
         model = load_model_for_case(case)
         st.write(f"Model for {case} loaded successfully!")
         normalised_data = normalise_data(arranged_data, case)
-
-        # if st.button("Predict Rock Type"):
         predictions = model.predict(normalised_data)
         predicted_labels = np.argmax(predictions, axis=1)  
         predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
