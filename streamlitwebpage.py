@@ -21,7 +21,7 @@ def load_model_for_case(case):
     elif case == 'Case 2 - No SiO2':
         return load_model('fine_tuned_model_noSiO2.h5', custom_objects={'LeakyReLU': LeakyReLU})
     elif case == 'Case 3 - No Alkali Oxides':
-        return load_model('model_case_3.h5', custom_objects={'LeakyReLU': LeakyReLU})
+        return load_model('fine_tuned_model_noAlkali.h5', custom_objects={'LeakyReLU': LeakyReLU})
 
 def TAS(ax,fontsize=8):
     from collections import namedtuple
