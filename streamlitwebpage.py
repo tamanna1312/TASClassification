@@ -179,23 +179,26 @@ else:
         data = pd.read_csv(uploaded_file)
         st.write("Uploaded Data:")
         st.write(data.head())
-# case = st.radio(
-#     "Select the case:",
-#     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
-# )
 
-
-# if 'data' in locals():
-#     arranged_data = arrange_columns(data, case)
-#     model = load_model_for_case(case)
-#     st.write(f"Model for {case} loaded successfully!")
-#     normalised_data = normalise_data(arranged_data, case)
 if 'data' in locals():
+    # Adding CSS for horizontal radio buttons
+    st.markdown(
+        """
+        <style>
+        .stRadio > div {
+            display: flex;
+            justify-content: space-around;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+
     case = st.radio(
-    "Select the case:",
-    ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides'],
-    horizontal=True
-)
+        "Select the case:",
+        ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides'],
+    )
+
     is_valid, missing_cols = validate_columns(data, case)
     if not is_valid:
         st.error(f"Missing required columns: {', '.join(missing_cols)}")
@@ -204,6 +207,21 @@ if 'data' in locals():
         model = load_model_for_case(case)
         st.write(f"Model for {case} loaded successfully!")
         normalised_data = normalise_data(arranged_data, case)
+
+# if 'data' in locals():
+#     case = st.radio(
+#     "Select the case:",
+#     ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides'],
+#     horizontal=True
+# )
+#     is_valid, missing_cols = validate_columns(data, case)
+#     if not is_valid:
+#         st.error(f"Missing required columns: {', '.join(missing_cols)}")
+#     else:
+#         arranged_data = arrange_columns(data, case)
+#         model = load_model_for_case(case)
+#         st.write(f"Model for {case} loaded successfully!")
+#         normalised_data = normalise_data(arranged_data, case)
 
         if st.button("Predict Rock Type"):
             predictions = model.predict(normalised_data)
