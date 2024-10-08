@@ -192,9 +192,10 @@ else:
 #     normalised_data = normalise_data(arranged_data, case)
 if 'data' in locals():
     case = st.radio(
-        "Select the case:",
-        ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
-    )
+    "Select the case:",
+    ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides'],
+    horizontal=True
+)
     is_valid, missing_cols = validate_columns(data, case)
     if not is_valid:
         st.error(f"Missing required columns: {', '.join(missing_cols)}")
