@@ -171,8 +171,8 @@ use_test_data = st.toggle("Use test data")
 
 if use_test_data:
     data = pd.read_csv(test_data_path)
-    st.write("Using test data:")
-    st.write(data.head())
+    # st.write("Using test data:")
+    # st.write(data.head())
 else:
     uploaded_file = st.file_uploader("Upload your CSV file", type=["csv"], key="file_uploader_key")
     if uploaded_file:
