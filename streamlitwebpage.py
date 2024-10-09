@@ -16,11 +16,11 @@ st.title('TAS Rock Classifier')
 
 #loading the model for the 3 cases.
 def load_model_for_case(case):
-    if case == 'Case 1 - All Oxides':
+    if case == 'All Oxides':
         return load_model('fine_tuned_model.h5', custom_objects={'LeakyReLU': LeakyReLU})
-    elif case == 'Case 2 - No SiO2':
+    elif case == 'No SiO2':
         return load_model('fine_tuned_model_noSiO2.h5', custom_objects={'LeakyReLU': LeakyReLU})
-    elif case == 'Case 3 - No Alkali Oxides':
+    elif case == 'No Alkali Oxides':
         return load_model('fine_tuned_model_noAlkali.h5', custom_objects={'LeakyReLU': LeakyReLU})
 
 def TAS(ax,fontsize=8):
@@ -130,9 +130,9 @@ tas_coordinates = {
 #     normalized_data = scaler.fit_transform(features)
 #     return normalized_data
 case_column_requirements = {
-    'Case 1 - All Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2'],
-    'Case 2 - No SiO2': ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O'],
-    'Case 3 - No Alkali Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)']
+    'All Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2'],
+    'No SiO2': ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O'],
+    'No Alkali Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)']
 }
 def validate_columns(data, case):
     required_columns = case_column_requirements[case]
@@ -150,11 +150,11 @@ def normalise_data(data, case):
     
 #arranging the columns of the test data in the same way as that of training data.
 def arrange_columns(data, case):
-    if case == 'Case 1 - All Oxides':
+    if case == 'All Oxides':
         column_order = ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2']
-    elif case == 'Case 2 - No SiO2':
+    elif case == 'No SiO2':
         column_order = ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O']
-    elif case == 'Case 3 - No Alkali Oxides':
+    elif case == 'No Alkali Oxides':
         column_order = ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)',  'MnO(wt%)', 'P2O5(wt%)']
     
     return data[column_order]
@@ -180,7 +180,7 @@ else:
         st.write("Uploaded Data:")
         st.write(data.head())
 if 'data' in locals():
-    case_options = ['Case 1 - All Oxides', 'Case 2 - No SiO2', 'Case 3 - No Alkali Oxides']
+    case_options = ['All Oxides', 'No SiO2', 'No Alkali Oxides']
 
     # Display the radio buttons horizontally
     case = st.radio(
