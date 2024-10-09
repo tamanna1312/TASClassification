@@ -180,7 +180,7 @@ else:
         st.write("Uploaded Data:")
         st.write(data.head())
 if 'data' in locals():
-    case_options = ['All Oxides', 'No SiO2', 'No Alkali Oxides']
+    case_options = ['All Oxides', 'No SiO2', 'No Alkali Oxides (Na2O & K2O)']
 
     # Display the radio buttons horizontally
     case = st.radio(
