@@ -118,17 +118,6 @@ tas_coordinates = {
     'Trachyandesite': (57.2, 9)
 }
 
-# def normalize_data(data, case):
-#     scaler = StandardScaler()
-#     # Depending on the case, exclude certain columns for normalization
-#     if case == 'Case 1 - All Oxides':
-#         features = data  
-#     elif case == 'Case 2 - No SiO2':
-#         features = data.drop(columns=['SiO2'])
-#     elif case == 'Case 3 - No Alkali Oxides':
-#         features = data.drop(columns=['Na2O', 'K2O'])
-#     normalized_data = scaler.fit_transform(features)
-#     return normalized_data
 case_column_requirements = {
     'All Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O', 'Na2O+K2O/SiO2'],
     'No SiO2': ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O'],
@@ -181,12 +170,10 @@ else:
         st.write(data.head())
 if 'data' in locals():
     case_options = ['All Oxides', 'No SiO2', 'No Alkali Oxides (Na2O & K2O)']
-
-    # Display the radio buttons horizontally
     case = st.radio(
         "Select the case:",
         case_options,
-        index=0,  # default selection
+        index=0,  
         horizontal=True
     )
 
