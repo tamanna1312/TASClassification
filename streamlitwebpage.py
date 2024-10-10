@@ -205,10 +205,10 @@ if 'data' in locals():
         st.write(arranged_data)
 
         csv = arranged_data.to_csv(index=False)
-        st.download_button(label="Download Predicted rock type file as CSV",
-                           data=csv,
-                           file_name='predicted_rock_types.csv',
-                           mime='text/csv')
+        # st.download_button(label="Download Predicted rock type file as CSV",
+        #                    data=csv,
+        #                    file_name='predicted_rock_types.csv',
+        #                    mime='text/csv')
 
         if selected_case == 'All Oxides':
             fig, ax = plt.subplots(figsize=(8, 6))
