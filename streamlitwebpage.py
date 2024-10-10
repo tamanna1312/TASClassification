@@ -170,18 +170,24 @@ else:
         st.write(data.head())
 if 'data' in locals():
     case_options = [
-        '**All Oxides_**',
-        '**No SiO<sub>2</sub>_**',  
-        'No Alkali Oxides (Na₂O, K₂O)_**'  
+        "**_All Oxides_**",
+        "**_No SiO₂_**", 
+        "**_No Alkali Oxides (Na₂O, K₂O)_**"
     ]
     case = st.radio(
         "Select the case:",
         case_options,
         index=0,  
-        horizontal=True
+        horizontal=True,
+        format_func=lambda x: x  
     )
-    case = case.replace('**', '').replace('_', '').replace('<sub>', '').replace('</sub>', '')
-
+    case_mapping = {
+        "**_All Oxides_**": 'All Oxides',
+        "**_No SiO₂_**": 'No SiO2',
+        "**_No Alkali Oxides (Na₂O, K₂O)_**": 'No Alkali Oxides'
+    }
+    
+    selected_case = case_mapping[case] 
     is_valid, missing_cols = validate_columns(data, case)
     if not is_valid:
         st.error(f"Missing required columns: {', '.join(missing_cols)}")
