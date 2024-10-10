@@ -237,8 +237,8 @@ if 'data' in locals():
                 for rock_type, count in rock_counts.items():
                     if rock_type in tas_coordinates:
                         sio2, na2o_k2o = tas_coordinates[rock_type]
-                        ax.text(sio2, na2o_k2o, str(count), fontsize=10, ha='center', va='center',
-                            bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
+                        ax.text(sio2, na2o_k2o, str(count), fontsize=10, ha='center', va='center')
+                            # bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
 
                 st.pyplot(fig)
             elif selected_case == 'No Alkali Oxides':
