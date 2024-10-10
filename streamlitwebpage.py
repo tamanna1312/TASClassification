@@ -187,15 +187,17 @@ if 'data' in locals():
         "**_No Alkali Oxides (Na₂O, K₂O)_**": 'No Alkali Oxides'
     }
     
-    selected_case = case_mapping[case] 
-    is_valid, missing_cols = validate_columns(data, case)
+    selected_case = case_mapping[case]  # Map the formatted label to the actual case name
+
+    # Now use the unformatted selected_case for validation and processing
+    is_valid, missing_cols = validate_columns(data, selected_case)
     if not is_valid:
         st.error(f"Missing required columns: {', '.join(missing_cols)}")
     else:
-        arranged_data = arrange_columns(data, case)
-        model = load_model_for_case(case)
-        st.write(f"Model for {case} loaded successfully!")
-        normalised_data = normalise_data(arranged_data, case)
+        arranged_data = arrange_columns(data, selected_case)
+        model = load_model_for_case(selected_case)
+        st.write(f"Model for {selected_case} loaded successfully!")
+        normalised_data = normalise_data(arranged_data, selected_case)
         predictions = model.predict(normalised_data)
         predicted_labels = np.argmax(predictions, axis=1)  
         predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
@@ -208,7 +210,7 @@ if 'data' in locals():
                            file_name='predicted_rock_types.csv',
                            mime='text/csv')
 
-        if case == 'Case 1 - All Oxides':
+        if selected_case == 'All Oxides':
             fig, ax = plt.subplots(figsize=(8, 6))
             TAS(ax)
             ax.set_xlim([40, 80])
