@@ -223,6 +223,41 @@ if 'data' in locals():
                 rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
                 ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], label=rock_type, zorder=1, s=2)  
             st.pyplot(fig)
+        if 'Predicted_Rock_Type' in arranged_data.columns:
+            if selected_case == 'No SiO2':
+                fig, ax = plt.subplots(figsize=(8, 6))
+                TAS(ax)  # Draw the TAS diagram
+                ax.set_xlim([40, 80])  # X-axis limits, though not used for scatter
+                ax.set_ylim([0, 16])
+                ax.set_xlabel(r'SiO$_2$ (wt%)')  # Keeping x-label for clarity
+                ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
+                ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
+                ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
+                rock_counts = arranged_data['Predicted_Rock_Type'].value_counts()
+                for rock_type, count in rock_counts.items():
+                    if rock_type in tas_coordinates:
+                        sio2, na2o_k2o = tas_coordinates[rock_type]
+                        ax.text(sio2, na2o_k2o, str(count), fontsize=10, ha='center', va='center',
+                            bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
+
+                st.pyplot(fig)
+            elif selected_case == 'No Alkali Oxides':
+                fig, ax = plt.subplots(figsize=(8, 6))
+                TAS(ax)  # Draw the TAS diagram
+                ax.set_xlim([40, 80])  # X-axis limits, though not used for scatter
+                ax.set_ylim([0, 16])
+                ax.set_xlabel(r'SiO$_2$ (wt%)')  # Keeping x-label for clarity
+                ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
+                ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
+                ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
+                rock_counts = arranged_data['Predicted_Rock_Type'].value_counts()
+                for rock_type, count in rock_counts.items():
+                    if rock_type in tas_coordinates:
+                        sio2, na2o_k2o = tas_coordinates[rock_type]
+                        ax.text(sio2, na2o_k2o, str(count), fontsize=10, ha='center', va='center',
+                            bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
+
+                st.pyplot(fig)
             # for rock_type, color in rock_colors.items():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
             #     if not rock_data.empty:  # Check if there is data to plot
