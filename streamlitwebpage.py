@@ -209,7 +209,8 @@ if 'data' in locals():
         #                    data=csv,
         #                    file_name='predicted_rock_types.csv',
         #                    mime='text/csv')
-
+    
+    if 'Predicted_Rock_Type' in arranged_data.columns:
         if selected_case == 'All Oxides':
             fig, ax = plt.subplots(figsize=(8, 6))
             TAS(ax)
@@ -222,8 +223,53 @@ if 'data' in locals():
             for rock_type in tas_coordinates.keys():
                 sio2, na2o_k2o = tas_coordinates[rock_type]
                 rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
-                ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], label=rock_type, zorder=1, s=2)  
+                ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], label=f'{rock_type} ({len(rock_samples)})', zorder=1, s=2)  
             st.pyplot(fig)
+
+        elif selected_case == 'No SiO2':
+            fig, ax = plt.subplots(figsize=(8, 6))
+            TAS(ax)  # Assuming TAS function draws the TAS diagram background
+            ax.set_xlim([40, 80])  # Depending on your range
+            ax.set_ylim([0, 16])
+            ax.set_xlabel(r'SiO$_2$ (wt%)')  # Keeping x-label for clarity
+            ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
+            ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
+            ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
+            for rock_type in tas_coordinates.keys():
+                sio2, na2o_k2o = tas_coordinates[rock_type]
+                rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+                ax.scatter(rock_samples['Na2O(wt%)'], rock_samples['K2O(wt%)'], label=f'{rock_type} ({len(rock_samples)})', zorder=1, s=2)  # Adjusted for missing SiO₂
+            st.pyplot(fig)
+
+         elif selected_case == 'No Alkali Oxides':
+            fig, ax = plt.subplots(figsize=(8, 6))
+            TAS(ax)
+            ax.set_xlim([40, 80])  # Depending on your range
+            ax.set_ylim([0, 16])
+            ax.set_xlabel(r'SiO$_2$ (wt%)')
+            ax.set_ylabel(r'Other Oxides (wt%)')  # Adjust the label accordingly
+            ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
+            ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
+            for rock_type in tas_coordinates.keys():
+                sio2, other_oxides = tas_coordinates[rock_type]
+                rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+                ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Other_Oxides'], label=f'{rock_type} ({len(rock_samples)})', zorder=1, s=2)  # Adjust for missing Na₂O and K₂
+            st.pyplot(fig)
+
+        # if selected_case == 'All Oxides':
+        #     fig, ax = plt.subplots(figsize=(8, 6))
+        #     TAS(ax)
+        #     ax.set_xlim([40, 80])
+        #     ax.set_ylim([0, 16])
+        #     ax.set_xlabel(r'SiO$_2$ (wt%)')
+        #     ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
+        #     ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
+        #     ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
+        #     for rock_type in tas_coordinates.keys():
+        #         sio2, na2o_k2o = tas_coordinates[rock_type]
+        #         rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
+        #         ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], label=rock_type, zorder=1, s=2)  
+        #     st.pyplot(fig)
             # for rock_type, color in rock_colors.items():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
             #     if not rock_data.empty:  # Check if there is data to plot
