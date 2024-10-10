@@ -244,16 +244,19 @@ if 'data' in locals():
          elif selected_case == 'No Alkali Oxides':
             fig, ax = plt.subplots(figsize=(8, 6))
             TAS(ax)
-            ax.set_xlim([40, 80])  # Depending on your range
+            ax.set_xlim([40, 80])
             ax.set_ylim([0, 16])
             ax.set_xlabel(r'SiO$_2$ (wt%)')
-            ax.set_ylabel(r'Other Oxides (wt%)')  # Adjust the label accordingly
+            ax.set_ylabel(r'FeOT+MgO+CaO (wt%)')  # Adjust based on what's relevant without alkali oxides
             ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
             ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
+        
             for rock_type in tas_coordinates.keys():
-                sio2, other_oxides = tas_coordinates[rock_type]
+                sio2, na2o_k2o = tas_coordinates[rock_type]
                 rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
-                ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Other_Oxides'], label=f'{rock_type} ({len(rock_samples)})', zorder=1, s=2)  # Adjust for missing Na₂O and K₂
+                ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['FeOT(wt%)'],  # Adjusted for missing Na2O, K2O
+                       label=f'{rock_type} ({len(rock_samples)})', zorder=1, s=2)  
+        
             st.pyplot(fig)
 
         # if selected_case == 'All Oxides':
