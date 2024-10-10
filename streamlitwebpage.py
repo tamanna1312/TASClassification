@@ -169,13 +169,18 @@ else:
         st.write("Uploaded Data:")
         st.write(data.head())
 if 'data' in locals():
-    case_options = ['All Oxides', 'No SiO2', 'No Alkali Oxides (Na2O & K2O)']
+    case_options = [
+        '**_Case 1 - All Oxides_**',
+        '**_Case 2 - No SiO<sub>2</sub>_**',  
+        '**_Case 3 - No Alkali Oxides (Na₂O, K₂O)_**'  
+    ]
     case = st.radio(
         "Select the case:",
         case_options,
         index=0,  
         horizontal=True
     )
+    case = case.replace('**', '').replace('_', '').replace('<sub>', '').replace('</sub>', '')
 
     is_valid, missing_cols = validate_columns(data, case)
     if not is_valid:
