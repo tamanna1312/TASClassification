@@ -123,6 +123,7 @@ case_column_requirements = {
     'No SiO2': ['TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)', 'Na2O+K2O'],
     'No Alkali Oxides': ['SiO2(wt%)', 'TiO2(wt%)', 'Al2O3(wt%)', 'FeOT(wt%)', 'CaO(wt%)', 'MgO(wt%)', 'MnO(wt%)', 'P2O5(wt%)']
 }
+# validating the columns of the csv file.
 def validate_columns(data, case):
     required_columns = case_column_requirements[case]
     missing_columns = [col for col in required_columns if col not in data.columns]
@@ -187,9 +188,7 @@ if 'data' in locals():
         "**_No Alkali Oxides (Na₂O, K₂O)_**": 'No Alkali Oxides'
     }
     
-    selected_case = case_mapping[case]  # Map the formatted label to the actual case name
-
-    # Now use the unformatted selected_case for validation and processing
+    selected_case = case_mapping[case]  
     is_valid, missing_cols = validate_columns(data, selected_case)
     if not is_valid:
         st.error(f"Missing required columns: {', '.join(missing_cols)}")
@@ -201,7 +200,7 @@ if 'data' in locals():
         predictions = model.predict(normalised_data)
         predicted_labels = np.argmax(predictions, axis=1)  
         predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
-        arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)  # Insert at the first column
+        arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types) 
         st.write(arranged_data)
 
         csv = arranged_data.to_csv(index=False)
@@ -226,10 +225,10 @@ if 'data' in locals():
         if 'Predicted_Rock_Type' in arranged_data.columns:
             if selected_case == 'No SiO2':
                 fig, ax = plt.subplots(figsize=(8, 6))
-                TAS(ax)  # Draw the TAS diagram
-                ax.set_xlim([40, 80])  # X-axis limits, though not used for scatter
+                TAS(ax)  
+                ax.set_xlim([40, 80])  
                 ax.set_ylim([0, 16])
-                ax.set_xlabel(r'SiO$_2$ (wt%)')  # Keeping x-label for clarity
+                ax.set_xlabel(r'SiO$_2$ (wt%)')  
                 ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
                 ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
                 ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
@@ -243,10 +242,10 @@ if 'data' in locals():
                 st.pyplot(fig)
             elif selected_case == 'No Alkali Oxides':
                 fig, ax = plt.subplots(figsize=(8, 6))
-                TAS(ax)  # Draw the TAS diagram
-                ax.set_xlim([40, 80])  # X-axis limits, though not used for scatter
+                TAS(ax)  
+                ax.set_xlim([40, 80])  
                 ax.set_ylim([0, 16])
-                ax.set_xlabel(r'SiO$_2$ (wt%)')  # Keeping x-label for clarity
+                ax.set_xlabel(r'SiO$_2$ (wt%)')  
                 ax.set_ylabel(r'Na$_2$O+K$_2$O (wt%)')
                 ax.tick_params(axis='x', direction='inout', length=8, width=1, colors='black', top=True)
                 ax.tick_params(axis='y', direction='inout', length=8, width=1, colors='black', right=True)
@@ -308,57 +307,6 @@ if 'data' in locals():
 
 
 
-
-
-
-
-# if data is not None:
-#     arranged_data = arrange_columns(data, case)
-#     model = load_model_for_case(case)
-#     normalised_data = normalise_data(arranged_data, case)
-    
-#     if st.button("Predict Rock Type"):
-#         predictions = model.predict(normalised_data)
-#         predicted_labels = np.argmax(predictions, axis=1)
-#         predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
-
-#         # Add the predicted rock type as the first column
-#         arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)
-
-#         st.write(arranged_data)
-
-#         # Download the result as CSV
-#         csv = arranged_data.to_csv(index=False)
-#         st.download_button(label="Download CSV with predicted rock types", data=csv, file_name='predicted_rock_types.csv', mime='text/csv')
-
-# if uploaded_file:
-#     data = pd.read_csv(uploaded_file)
-#     st.write("Uploaded Data:")
-#     st.write(data.head())
-#     arranged_data = arrange_columns(data, case)
-#     # st.write("Data with Columns Rearranged:")
-#     # st.write(arranged_data.head())
-    
-# # model_path = 'fine_tuned_model.h5'  
-# # model = load_model(model_path, custom_objects={'LeakyReLU': LeakyReLU})
-
-#     model = load_model_for_case(case)
-#     st.write(f"Model for {case} loaded successfully!")
-#     normalised_data = normalise_data(arranged_data, case)
-
-
-# if st.button("Predict Rock Type"):
-#     predictions = model.predict(normalised_data)
-#     predicted_labels = np.argmax(predictions, axis=1)  
-#     predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
-#     arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types)
-#     st.write(arranged_data)
-
-#     csv = data.to_csv(index=False)
-#     st.download_button(label="Download Predicted rock type file as csv",
-#                            data=csv,
-#                            file_name='predicted_rock_types.csv',
-#                            mime='text/csv')
 
 
 
