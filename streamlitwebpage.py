@@ -221,6 +221,11 @@ if 'data' in locals():
                 sio2, na2o_k2o = tas_coordinates[rock_type]
                 rock_samples = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
                 ax.scatter(rock_samples['SiO2(wt%)'], rock_samples['Na2O+K2O'], label=rock_type, zorder=1, s=2)  
+                rock_count = len(rock_samples)
+                if rock_count > 0:
+                    ax.text(sio2, na2o_k2o + 0.5, str(rock_count), fontsize=12, ha='center', va='center', color='green')
+                    # bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
+
             st.pyplot(fig)
         if 'Predicted_Rock_Type' in arranged_data.columns:
             if selected_case == 'No SiO2':
