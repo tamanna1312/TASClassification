@@ -187,7 +187,7 @@ if 'data' in locals():
         "**_All Oxides_**": 'All Oxides',
         "**_No SiO₂_**": 'No SiO2',
         "**_No Alkali Oxides (Na₂O, K₂O)_**": 'No Alkali Oxides',
-        "Compare"
+        "Compare": 'Compare'
     }
     
     selected_case = case_mapping[case]  
