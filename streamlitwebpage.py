@@ -173,7 +173,8 @@ if 'data' in locals():
     case_options = [
         "**_All Oxides_**",
         "**_No SiO₂_**", 
-        "**_No Alkali Oxides (Na₂O, K₂O)_**"
+        "**_No Alkali Oxides (Na₂O, K₂O)_**",
+        "Comapre"
     ]
     case = st.radio(
         "Select the case:",
@@ -185,7 +186,8 @@ if 'data' in locals():
     case_mapping = {
         "**_All Oxides_**": 'All Oxides',
         "**_No SiO₂_**": 'No SiO2',
-        "**_No Alkali Oxides (Na₂O, K₂O)_**": 'No Alkali Oxides'
+        "**_No Alkali Oxides (Na₂O, K₂O)_**": 'No Alkali Oxides',
+        "Compare"
     }
     
     selected_case = case_mapping[case]  
@@ -262,6 +264,26 @@ if 'data' in locals():
                             # bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
 
                 st.pyplot(fig)
+
+
+
+        if selected_case == 'Compare':
+            rock_types = list(tas_coordinates.keys())
+            counts_all_oxides = arranged_data_case1['Predicted_Rock_Type'].value_counts()
+            counts_no_sio2 = arranged_data_case2['Predicted_Rock_Type'].value_counts()
+            counts_no_alkali = arranged_data_case3['Predicted_Rock_Type'].value_counts()
+    
+            comparison_data = {
+                'Rock Type': rock_types,
+                'All Oxides': [counts_all_oxides.get(rt, 0) for rt in rock_types],
+                'No SiO₂': [counts_no_sio2.get(rt, 0) for rt in rock_types],
+                'No Alkali Oxides': [counts_no_alkali.get(rt, 0) for rt in rock_types]
+                }
+   
+            comparison_df = pd.DataFrame(comparison_data)
+            st.write("### Comparison of Rock Type Counts Across Different Cases")
+            st.table(comparison_df)
+
             # for rock_type, color in rock_colors.items():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
             #     if not rock_data.empty:  # Check if there is data to plot
