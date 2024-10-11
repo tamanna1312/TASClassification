@@ -195,7 +195,7 @@ if 'data' in locals():
     else:
         arranged_data = arrange_columns(data, selected_case)
         model = load_model_for_case(selected_case)
-        st.write(f"Model for {selected_case} loaded successfully!")
+        # st.write(f"Model for {selected_case} loaded successfully!")
         normalised_data = normalise_data(arranged_data, selected_case)
         predictions = model.predict(normalised_data)
         predicted_labels = np.argmax(predictions, axis=1)  
