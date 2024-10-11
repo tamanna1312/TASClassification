@@ -174,7 +174,7 @@ if 'data' in locals():
         "**_All Oxides_**",
         "**_No SiO₂_**", 
         "**_No Alkali Oxides (Na₂O, K₂O)_**",
-        "Comapre"
+        "Compare"
     ]
     case = st.radio(
         "Select the case:",
