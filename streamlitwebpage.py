@@ -156,7 +156,7 @@ label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanit
                  9: 'Rhyolite', 10: 'Tephrite', 11: 'Trachyandesite', 12: 'Trachybasalt', 
                  13: 'Trachydacite', 14: 'Trachyte'}
 
-test_data_path = "NewTestFinetunded20.csv"  
+test_data_path = "Altered1estFinetunded20.csv"  
 use_test_data = st.toggle("Use test data")
 
 if use_test_data:
