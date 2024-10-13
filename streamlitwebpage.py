@@ -292,7 +292,6 @@ if 'data' in locals():
             comparison_df = pd.DataFrame(rock_type_counts)
             comparison_df.index.name = 'Rock Type'
             comparison_df.reset_index(inplace=True)
-            st.write("Rock type comparison across all cases:")
             st.dataframe(comparison_df)
         
         
