@@ -125,7 +125,9 @@ case_column_requirements = {
 }
 # validating the columns of the csv file.
 def validate_columns(data, case):
-    required_columns = case_column_requirements[case]
+    required_columns = case_column_requirements.get(case, [])
+    if not required_columns:
+        return True, None
     missing_columns = [col for col in required_columns if col not in data.columns]
     if missing_columns:
         return False, missing_columns
@@ -170,6 +172,7 @@ else:
         st.write("Uploaded Data:")
         st.write(data.head())
 if 'data' in locals():
+    rock_counts_dict = {}
     case_options = [
         "**_All Oxides_**",
         "**_No SiO₂_**", 
@@ -191,21 +194,22 @@ if 'data' in locals():
     }
     
     selected_case = case_mapping[case]  
-    is_valid, missing_cols = validate_columns(data, selected_case)
-    if not is_valid:
-        st.error(f"Missing required columns: {', '.join(missing_cols)}")
-    else:
-        arranged_data = arrange_columns(data, selected_case)
-        model = load_model_for_case(selected_case)
-        # st.write(f"Model for {selected_case} loaded successfully!")
-        normalised_data = normalise_data(arranged_data, selected_case)
-        predictions = model.predict(normalised_data)
-        predicted_labels = np.argmax(predictions, axis=1)  
-        predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
-        arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types) 
-        st.write(arranged_data)
-
-        csv = arranged_data.to_csv(index=False)
+   if selected_case != 'Compare':
+        is_valid, missing_cols = validate_columns(data, selected_case)
+        if not is_valid:
+            st.error(f"Missing required columns: {', '.join(missing_cols)}")
+        else:
+            arranged_data = arrange_columns(data, selected_case)
+            model = load_model_for_case(selected_case)
+            normalised_data = normalise_data(arranged_data, selected_case)
+            predictions = model.predict(normalised_data)
+            predicted_labels = np.argmax(predictions, axis=1)  
+            predicted_rock_types = [label_to_rock[label] for label in predicted_labels]
+            arranged_data.insert(0, 'Predicted_Rock_Type', predicted_rock_types) 
+            st.write(arranged_data)
+            rock_counts = pd.Series(predicted_rock_types).value_counts().reindex(label_to_rock.values(), fill_value=0)
+            rock_counts_dict[selected_case] = rock_counts
+            csv = arranged_data.to_csv(index=False)
         # st.download_button(label="Download Predicted rock type file as CSV",
         #                    data=csv,
         #                    file_name='predicted_rock_types.csv',
@@ -267,27 +271,29 @@ if 'data' in locals():
 
 
 
-        if selected_case == 'Compare':
-            rock_type_counts = {}
-            for case_name, case_key in {'All Oxides': 'All Oxides', 'No SiO₂': 'No SiO2', 'No Alkali Oxides': 'No Alkali Oxides'}.items():
-                valid_columns, missing_columns = validate_columns(data, case_key)
-                if not valid_columns:
-                    st.error(f"Missing columns for {case_name}: {', '.join(missing_columns)}")
-                    continue
-        
-                arranged_data = arrange_columns(data, case_key)
-                model = load_model_for_case(case_key)
-                normalised_data = normalise_data(arranged_data, case_key)
-                predictions = model.predict(normalised_data)
-                predicted_labels = np.argmax(predictions, axis=1)
-                predicted_rocks = [label_to_rock[label] for label in predicted_labels]
-                rock_type_counts[case_name] = pd.Series(predicted_rocks).value_counts().reindex(label_to_rock.values(), fill_value=0)
-            if rock_type_counts:
-                comparison_df = pd.DataFrame(rock_type_counts)
-                comparison_df.index.name = 'Rock Type'
-                comparison_df.reset_index(inplace=True)
-                st.write("Rock type comparison across all cases:")
-                st.dataframe(comparison_df)
+    else:
+        st.write("Comparison of rock type counts across all cases:")
+        rock_type_counts = {}
+        for case_name, case_key in {'All Oxides': 'All Oxides', 'No SiO₂': 'No SiO2', 'No Alkali Oxides': 'No Alkali Oxides'}.items():
+            is_valid, missing_cols = validate_columns(data, case_key)
+            if not is_valid:
+                st.error(f"Missing required columns for {case_name}: {', '.join(missing_cols)}")
+                continue
+
+            arranged_data = arrange_columns(data, case_key)
+            model = load_model_for_case(case_key)
+            normalised_data = normalise_data(arranged_data, case_key)
+            predictions = model.predict(normalised_data)
+            predicted_labels = np.argmax(predictions, axis=1)
+            predicted_rocks = [label_to_rock[label] for label in predicted_labels]
+            rock_type_counts[case_name] = pd.Series(predicted_rocks).value_counts().reindex(label_to_rock.values(), fill_value=0)
+
+        if rock_type_counts:
+            comparison_df = pd.DataFrame(rock_type_counts)
+            comparison_df.index.name = 'Rock Type'
+            comparison_df.reset_index(inplace=True)
+            st.write("Rock type comparison across all cases:")
+            st.dataframe(comparison_df)
         
         
 
