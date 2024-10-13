@@ -194,7 +194,7 @@ if 'data' in locals():
     }
     
     selected_case = case_mapping[case]  
-   if selected_case != 'Compare':
+    if selected_case != 'Compare':
         is_valid, missing_cols = validate_columns(data, selected_case)
         if not is_valid:
             st.error(f"Missing required columns: {', '.join(missing_cols)}")
