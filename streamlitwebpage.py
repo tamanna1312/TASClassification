@@ -268,21 +268,28 @@ if 'data' in locals():
 
 
         if selected_case == 'Compare':
-            rock_types = list(tas_coordinates.keys())
-            counts_all_oxides = arranged_data_case1['Predicted_Rock_Type'].value_counts()
-            counts_no_sio2 = arranged_data_case2['Predicted_Rock_Type'].value_counts()
-            counts_no_alkali = arranged_data_case3['Predicted_Rock_Type'].value_counts()
-    
-            comparison_data = {
-                'Rock Type': rock_types,
-                'All Oxides': [counts_all_oxides.get(rt, 0) for rt in rock_types],
-                'No SiO₂': [counts_no_sio2.get(rt, 0) for rt in rock_types],
-                'No Alkali Oxides': [counts_no_alkali.get(rt, 0) for rt in rock_types]
-                }
-   
-            comparison_df = pd.DataFrame(comparison_data)
-            st.write("### Comparison of Rock Type Counts Across Different Cases")
-            st.table(comparison_df)
+            rock_type_counts = {}
+            for case_name, case_key in {'All Oxides': 'All Oxides', 'No SiO₂': 'No SiO2', 'No Alkali Oxides': 'No Alkali Oxides'}.items():
+                valid_columns, missing_columns = validate_columns(data, case_key)
+                if not valid_columns:
+                    st.error(f"Missing columns for {case_name}: {', '.join(missing_columns)}")
+                    continue
+        
+                arranged_data = arrange_columns(data, case_key)
+                model = load_model_for_case(case_key)
+                normalised_data = normalise_data(arranged_data, case_key)
+                predictions = model.predict(normalised_data)
+                predicted_labels = np.argmax(predictions, axis=1)
+                predicted_rocks = [label_to_rock[label] for label in predicted_labels]
+                rock_type_counts[case_name] = pd.Series(predicted_rocks).value_counts().reindex(label_to_rock.values(), fill_value=0)
+            if rock_type_counts:
+                comparison_df = pd.DataFrame(rock_type_counts)
+                comparison_df.index.name = 'Rock Type'
+                comparison_df.reset_index(inplace=True)
+                st.write("Rock type comparison across all cases:")
+                st.dataframe(comparison_df)
+        
+        
 
             # for rock_type, color in rock_colors.items():
             #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
