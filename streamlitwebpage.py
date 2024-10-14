@@ -66,11 +66,9 @@ def TAS(ax,fontsize=8):
              FieldName('Phonolite', 57.5, 14.5, 0),
              FieldName('Tephrite', 45, 7.3, 0),
              FieldName('Foidite', 44, 11.5, 0),
-             FieldName('Basa\nnite', 43, 4.5, 0))
+             FieldName('Basa\nnite', 43, 4.5, 0),
              FieldName('1:Trachybasalt', 80, 15, 0))
             
-
-
 
     for line in lines:
         ax.plot([line.x1, line.x2], [line.y1, line.y2],
