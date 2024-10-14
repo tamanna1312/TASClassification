@@ -67,6 +67,8 @@ def TAS(ax,fontsize=8):
              FieldName('Tephrite', 45, 7.3, 0),
              FieldName('Foidite', 44, 11.5, 0),
              FieldName('Basa\nnite', 43, 4.5, 0))
+             FieldName('1:Trachybasalt', 80, 15, 0))
+            
 
 
 
@@ -78,10 +80,10 @@ def TAS(ax,fontsize=8):
                     horizontalalignment='center', verticalalignment='top',
                     rotation=name.rotation, zorder=2,
                     bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2')) 
-    ax.text(0.95, 0.95, "1: Field Name 1\n2: Field Name 2\n3: Field Name 3", 
-            transform=ax.transAxes, fontsize=12, color='black', 
-            verticalalignment='top', horizontalalignment='right',
-            bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
+    # ax.text(0.95, 0.95, "1: Field Name 1\n2: Field Name 2\n3: Field Name 3", 
+    #         transform=ax.transAxes, fontsize=12, color='black', 
+    #         verticalalignment='top', horizontalalignment='right',
+    #         bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
 
 rock_colors = {
     'Rhyolite': 'y',
