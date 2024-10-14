@@ -78,19 +78,7 @@ def TAS(ax,fontsize=8):
                     horizontalalignment='center', verticalalignment='top',
                     rotation=name.rotation, zorder=2,
                     bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2')) 
-    full_field_names = [
-        '1: Trachybasalt',
-        '2: Basalt-trachyandesite',
-        '3: Trachyandesite', 
-]
-
-    ax.text(70, 14, '\n'.join(full_field_names), 
-        transform=ax.transAxes, 
-        fontsize=10, 
-        verticalalignment='top', 
-        horizontalalignment='left', 
-        bbox=dict(facecolor='white', alpha=0.5, edgecolor='black'))
-
+    
 
 # plt.show()
 
@@ -247,6 +235,19 @@ if 'data' in locals():
                 if rock_count > 0:
                     ax.text(sio2, na2o_k2o + 0.5, str(rock_count), fontsize=12, ha='center', va='center', color='green')
                     # bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
+            full_field_names = [
+                '1: Trachybasalt',
+                '2: Basalt-trachyandesite',
+                '3: Trachyandesite', 
+            ]
+
+            ax.text(70, 14, '\n'.join(full_field_names), 
+            transform=ax.transAxes, 
+            fontsize=10, 
+            verticalalignment='top', 
+            horizontalalignment='left', 
+            bbox=dict(facecolor='white', alpha=0.5, edgecolor='black'))
+
 
             st.pyplot(fig)
         if 'Predicted_Rock_Type' in arranged_data.columns:
