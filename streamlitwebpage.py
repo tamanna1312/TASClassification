@@ -76,15 +76,15 @@ def TAS(ax,fontsize=8):
         ax.plot([line.x1, line.x2], [line.y1, line.y2],
                        '-', color='black', zorder=2)
     for name in names:
-    if '1:' in name.name or '2:' in name.name or '3:' in name.name:
-        ax.text(name.x, name.y, name.name, color='black', size=8,  
-                horizontalalignment='center', verticalalignment='top',
-                rotation=name.rotation, zorder=2) 
-    else:
-        ax.text(name.x, name.y, name.name, color='black', size=13,
-                horizontalalignment='center', verticalalignment='top',
-                rotation=name.rotation, zorder=2,
-                bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))  # Box for others
+        if '1:' in name.name or '2:' in name.name or '3:' in name.name:
+            ax.text(name.x, name.y, name.name, color='black', size=8,  
+                    horizontalalignment='center', verticalalignment='top',
+                    rotation=name.rotation, zorder=2) 
+        else:
+            ax.text(name.x, name.y, name.name, color='black', size=13,
+                    horizontalalignment='center', verticalalignment='top',
+                    rotation=name.rotation, zorder=2,
+                    bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2')) 
     # ax.text(0.95, 0.95, "1: Field Name 1\n2: Field Name 2\n3: Field Name 3", 
     #         transform=ax.transAxes, fontsize=12, color='black', 
     #         verticalalignment='top', horizontalalignment='right',
