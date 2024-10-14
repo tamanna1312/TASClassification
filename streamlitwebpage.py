@@ -67,9 +67,9 @@ def TAS(ax,fontsize=8):
              FieldName('Tephrite', 45, 7.3, 0),
              FieldName('Foidite', 44, 11.5, 0),
              FieldName('Basa\nnite', 43, 4.5, 0),
-             FieldName('1: Trachybasalt', 74, 15.8, 0),
-             FieldName('2: Basaltic Trachyandesite', 74, 15.3, 0),
-             FieldName('3: Trachyandesite', 74, 14.8, 0))
+             FieldName('1: Trachybasalt', 79, 15.8, 0),
+             FieldName('2: Basaltic Trachyandesite', 79, 15.3, 0),
+             FieldName('3: Trachyandesite', 79, 14.8, 0))
             
 
     for line in lines:
