@@ -78,7 +78,7 @@ def TAS(ax,fontsize=8):
     for name in names:
         if '1:' in name.name or '2:' in name.name or '3:' in name.name:
             ax.text(name.x, name.y, name.name, color='black', size=8,  
-                    horizontalalignment='center', verticalalignment='top',
+                    horizontalalignment='right', verticalalignment='top',
                     rotation=name.rotation, zorder=2) 
         else:
             ax.text(name.x, name.y, name.name, color='black', size=13,
