@@ -227,7 +227,7 @@ if 'data' in locals():
         #                    file_name='predicted_rock_types.csv',
         #                    mime='text/csv')
         if selected_case == 'All Oxides':
-            fig, ax = plt.subplots(figsize=(10, 8))
+            fig, ax = plt.subplots(figsize=(8, 6))
             TAS(ax)
             ax.set_xlim([40, 80])
             ax.set_ylim([0, 16])
@@ -246,7 +246,7 @@ if 'data' in locals():
             st.pyplot(fig)
         if 'Predicted_Rock_Type' in arranged_data.columns:
             if selected_case == 'No SiO2':
-                fig, ax = plt.subplots(figsize=(10, 8))
+                fig, ax = plt.subplots(figsize=(8, 6))
                 TAS(ax)  
                 ax.set_xlim([40, 80])  
                 ax.set_ylim([0, 16])
@@ -263,7 +263,7 @@ if 'data' in locals():
 
                 st.pyplot(fig)
             elif selected_case == 'No Alkali Oxides':
-                fig, ax = plt.subplots(figsize=(10, 8))
+                fig, ax = plt.subplots(figsize=(8, 6))
                 TAS(ax)  
                 ax.set_xlim([40, 80])  
                 ax.set_ylim([0, 16])
