@@ -84,7 +84,7 @@ def TAS(ax,fontsize=8):
         '3: Trachyandesite', 
 ]
 
-    ax.text(74, 15, '\n'.join(full_field_names), 
+    ax.text(70, 14, '\n'.join(full_field_names), 
         transform=ax.transAxes, 
         fontsize=10, 
         verticalalignment='top', 
