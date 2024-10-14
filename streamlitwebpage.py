@@ -78,9 +78,10 @@ def TAS(ax,fontsize=8):
                     horizontalalignment='center', verticalalignment='top',
                     rotation=name.rotation, zorder=2,
                     bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2')) 
-    
-
-# plt.show()
+    ax.text(0.95, 0.95, "1: Field Name 1\n2: Field Name 2\n3: Field Name 3", 
+            transform=ax.transAxes, fontsize=12, color='black', 
+            verticalalignment='top', horizontalalignment='right',
+            bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='rou
 
 rock_colors = {
     'Rhyolite': 'y',
@@ -235,20 +236,6 @@ if 'data' in locals():
                 if rock_count > 0:
                     ax.text(sio2, na2o_k2o + 0.5, str(rock_count), fontsize=12, ha='center', va='center', color='green')
                     # bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
-            full_field_names = [
-                '1: Trachybasalt',
-                '2: Basalt-trachyandesite',
-                '3: Trachyandesite', 
-            ]
-
-            ax.text(8, 6, '\n'.join(full_field_names), 
-            transform=ax.transAxes, 
-            fontsize=10, 
-            verticalalignment='top', 
-            horizontalalignment='left', 
-            bbox=dict(facecolor='white', alpha=0.5, edgecolor='black'))
-
-
             st.pyplot(fig)
         if 'Predicted_Rock_Type' in arranged_data.columns:
             if selected_case == 'No SiO2':
