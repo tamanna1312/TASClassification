@@ -68,7 +68,7 @@ def TAS(ax,fontsize=8):
              FieldName('Foidite', 44, 11.5, 0),
              FieldName('Basa\nnite', 43, 4.5, 0),
              FieldName('1: Trachybasalt', 74, 15.8, 0),
-             FieldName('2: Basaltic Trachyandesite', 74, 15.5, 0),
+             FieldName('2: Basaltic Trachyandesite', 74, 15.3, 0),
              FieldName('3: Trachyandesite', 74, 14.8, 0))
             
 
@@ -78,7 +78,7 @@ def TAS(ax,fontsize=8):
     for name in names:
         if '1:' in name.name or '2:' in name.name or '3:' in name.name:
             ax.text(name.x, name.y, name.name, color='black', size=8,  
-                    horizontalalignment='left', verticalalignment='top',
+                    horizontalalignment='right', verticalalignment='top',
                     rotation=name.rotation, zorder=2) 
         else:
             ax.text(name.x, name.y, name.name, color='black', size=13,
