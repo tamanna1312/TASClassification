@@ -307,28 +307,6 @@ if 'data' in locals():
         
         
 
-            # for rock_type, color in rock_colors.items():
-            #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
-            #     if not rock_data.empty:  # Check if there is data to plot
-            #         ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 
-            #         'o', c=color, markersize=2, label=rock_type)
-
-            # ax.legend()
-            # st.pyplot(fig)
-            # for rock_type in rock_colors.keys():
-            #     rock_data = arranged_data[arranged_data['Predicted_Rock_Type'] == rock_type]
-            #     ax.plot(rock_data['SiO2(wt%)'], rock_data['Na2O+K2O'], 'o', c=rock_colors[rock_type], markersize=2)
-
-            # ax.legend()
-            # st.pyplot(fig)
- # CASE 2/3 - rock_counts = arranged_data['Predicted_Rock_Type'].value_counts()
- #            for rock_type, count in rock_counts.items():
- #                if rock_type in tas_coordinates:
- #                    sio2, na2o_k2o = tas_coordinates[rock_type]
- #                    ax.text(sio2, na2o_k2o, str(count), fontsize=10, ha='center', va='center',
- #                    bbox=dict(facecolor='white', alpha=0.8, edgecolor='black', boxstyle='round,pad=0.2'))
-
- #            st.pyplot(fig)
             
 
 
