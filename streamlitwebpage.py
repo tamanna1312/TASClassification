@@ -17,6 +17,7 @@ st.title('TAS Rock Classifier')
 #loading the model for the 3 cases.
 def load_model_for_case(case):
     if case == 'All Oxides':
+        # return load_model('fine_tuned_model.h5', custom_objects={'LeakyReLU': LeakyReLU})
         return load_model('fine_tuned_model.h5', custom_objects={'LeakyReLU': LeakyReLU})
     elif case == 'No SiO2':
         return load_model('fine_tuned_model_noSiO2.h5', custom_objects={'LeakyReLU': LeakyReLU})
