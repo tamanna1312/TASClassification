@@ -6,3 +6,4 @@ keras==3.3.3
 scikit-learn
 joblib
 matplotlib
+seaborn
