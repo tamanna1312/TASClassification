@@ -34,7 +34,7 @@ with col1:
 
 with col2:
     # Display the image on the right side with a smaller size
-    st.image('Goethe-Logo.gif', width=150)  # Adjust width as needed
+    st.image('Goethe-Logo.gif', width=200)  # Adjust width as needed
 # st.image('Goethe-Logo.gif', use_column_width=False)
 # st.write('An application designed for classification of volcanic rocks using ML.')
 
