@@ -26,7 +26,7 @@ st.markdown(
 st.sidebar.image(
     'Goethe-Logo.gif')
 st.markdown("""
-    <div style="text-align: left;">
+    <div style="text-align: right;">
         <img src="Goethe-Logo.gif" width="100">
     </div>
 """, unsafe_allow_html=True)
