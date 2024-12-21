@@ -4,7 +4,7 @@ import streamlit as st
 st.header('Using TAS Classifier')
 st.subheader('Data Upload:')
 st.write('Users can upload their geochemical dataset in CSV format. The app validates the uploaded file to ensure compatibility with the selected case.')
-st.subheader('Automatic Column Verification:'
+st.subheader('Automatic Column Verification:')
 st.write('The app checks whether the uploaded data contains all the required element oxides for the selected case (e.g., all oxides for Case 1, excluding SiO₂ for Case 2, or excluding alkali oxides for Case 3). Missing or incorrect columns will prompt the user to correct the dataset. The data is automatically rearranged to match the column order of the model’s training data.')
 st.subheader('Predicted Rock Type:')
 st.write('Once the data passes validation, the app uses the trained ML model to classify the rock types. The predicted rock type is displayed in a new column alongside the original dataset in a table format.')
