@@ -16,10 +16,10 @@ import streamlit as st
 # Adding custom CSS for colored subheaders
 st.markdown("""
     <style>
-        .subheader-blue { color: blue; font-size: 20px; }
-        .subheader-green { color: green; font-size: 20px; }
-        .subheader-red { color: red; font-size: 20px; }
-        .header-white { color: white; font-size: 24px; }
+        .subheader-blue { color: blue; font-size: 15px; }
+        .subheader-green { color: green; font-size: 15px; }
+        .subheader-red { color: red; font-size: 15px; }
+        .header-white { color: white; font-size: 20px; }
     </style>
 """, unsafe_allow_html=True)
 
