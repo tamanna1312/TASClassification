@@ -7,7 +7,7 @@ st.subheader('The application contains 2 sections:')
 st.subheader(':blue[Classify Volcanic Rocks using ML model]')
 st.write('-> Based on major and minor oxide data.')
 st.subheader(':blue[Generate Fake Data from Real-World Data]')
-st.write('-> Use real-world data to generate fake datasets that tries to reflect the geochemical relationships within the oxides.')
+st.write('-> Use real-world data to generate fake data that tries to reflect the geochemical relationships within the oxides.')
 
 
 # st.write('An application designed for classification of volcanic rocks using ML.')
