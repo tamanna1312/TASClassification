@@ -33,8 +33,10 @@ with col1:
     pass
 
 with col2:
+    # Add some spacing to move the image further right
+    st.markdown("<div style='padding-left: 50px;'></div>", unsafe_allow_html=True)
     # Display the image on the right side with a smaller size
-    st.image('Goethe-Logo.gif', width=200)  # Adjust width as needed
+    st.image('Goethe-Logo.gif', width=200)
 # st.image('Goethe-Logo.gif', use_column_width=False)
 # st.write('An application designed for classification of volcanic rocks using ML.')
 
