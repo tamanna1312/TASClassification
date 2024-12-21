@@ -27,7 +27,7 @@ st.sidebar.image(
     'Goethe-Logo.gif')
 st.markdown("""
     <div style="text-align: right;">
-        <img src="Goethe-Logo.gif" width="200">
+        <img src="Goethe-Logo.gif" width="100%">
     </div>
 """, unsafe_allow_html=True)
 # st.image('Goethe-Logo.gif', use_column_width=True)
