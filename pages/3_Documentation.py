@@ -1,6 +1,6 @@
 import streamlit as st
 
-st.title('Documentation for Creating Fake Data')
+# st.title('Documentation for Creating Fake Data')
 # st.header('Classfication of volcanic rocks using ML')
 st.header('Data Upload:')
 st.write('Users can upload their geochemical dataset in CSV format. The app validates the uploaded file to ensure compatibility with the selected case.')
