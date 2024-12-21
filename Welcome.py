@@ -25,8 +25,12 @@ st.markdown(
 
 st.sidebar.image(
     'Goethe-Logo.gif')
-
-st.image('Goethe-Logo.gif', use_column_width=True)
+st.markdown("""
+    <div style="text-align: right;">
+        <img src="Goethe-Logo.gif" width="200">
+    </div>
+""", unsafe_allow_html=True)
+# st.image('Goethe-Logo.gif', use_column_width=True)
 # st.write('An application designed for classification of volcanic rocks using ML.')
 
 st.session_state.all_data = None
