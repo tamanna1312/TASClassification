@@ -1,7 +1,7 @@
 import streamlit as st
 
 # st.header('Welcome')
-# st.header('Classfication of volcanic rocks using ML')
+st.header('Classfication of volcanic rocks using ML')
 # st.header('Data Upload:')
 # st.write('Users can upload their geochemical dataset in CSV format. The app validates the uploaded file to ensure compatibility with the selected case.')
 # st.header('Automatic Column Verification:')
