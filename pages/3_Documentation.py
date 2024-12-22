@@ -1,7 +1,7 @@
 import streamlit as st
 st.header(':blue[Using TAS Classifier]')
 st.subheader('Introduction')
-st.write('The TAS Classifier is a ML based tool designed for automatic rock classification using 10 major and minor oxides. By uploading your dataset, the app predicts rock types and visualizes them on a TAS (Total Alkali and Silica) plot. The classifier supports three distinct cases, allowing users to explore scenarios where certain major oxides (e.g., SiO₂ or alkali oxides) are excluded.')
+st.write('The TAS Classifier is a ML based tool designed for automatic rock classification using 10 major and minor oxides. By uploading your dataset, the app predicts rock types and visualizes them on a TAS (Total Alkali-Silica) plot. The classifier supports 3 distinct cases, allowing users to explore scenarios where certain major oxides (e.g., SiO₂ or alkali oxides) are excluded.')
 st.header(':blue[Creating Fake Data]')
 st.subheader('Introduction')
 st.write('The Fake Data Creation module enables users to create fake geochemical data based on real-world data. Using statistical techniques, such as mean and covariance analysis, the app creates realistic geochemical data that mirrors the variability and correlations observed in real samples. Users can visualize correlation matrices for both real and generated data as well as download the fake data.')
