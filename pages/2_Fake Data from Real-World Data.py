@@ -85,15 +85,10 @@ st.title("Fake Data Generator and Correlation Analysis")
         # )
 # Toggle for using test data or uploading real data
 use_test_data = st.toggle("Use Test Data", value=False)
+test_data_path = "Altered1TestFinetunded20.csv" 
 
 if use_test_data:
-    st.header("Using Test Data")
-    test_file = st.file_uploader("Upload your Test Data CSV file", type="csv")
-    
-    if test_file:
-        real_data = pd.read_csv(test_file)
-        st.write("Preview of Test Data:")
-        st.dataframe(real_data.head())
+    data = pd.read_csv(test_data_path)
 else:
     st.header("Upload Real Data")
     uploaded_file = st.file_uploader("Upload your CSV file containing the real data", type="csv")
@@ -104,16 +99,13 @@ else:
         st.dataframe(real_data.head())
 
 if 'real_data' in locals():
-    # Ensure the required columns exist
     required_columns = ['Rock_name']  # Add other required columns here
     missing_columns = [col for col in required_columns if col not in real_data.columns]
     
     if missing_columns:
         st.error(f"The following required columns are missing: {', '.join(missing_columns)}")
     else:
-        # Button to generate fake data
         if st.button("Produce Fake Data"):
-            # Generate fake data
             n_samples = 100
             fake_data = []
 
