@@ -88,7 +88,9 @@ use_test_data = st.toggle("Use Test Data", value=False)
 test_data_path = "NormalisedFilteredGEOROCData.csv" 
 
 if use_test_data:
-    data = pd.read_csv(test_data_path)
+    real_data = pd.read_csv(test_data_path)
+        # st.write("Preview of Test Data:")
+    st.dataframe(real_data.head())
 else:
     st.header("Upload Real Data")
     uploaded_file = st.file_uploader("Upload your CSV file containing the real data", type="csv")
