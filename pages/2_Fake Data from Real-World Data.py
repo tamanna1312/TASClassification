@@ -13,11 +13,11 @@ import matplotlib.pyplot as plt
 st.title("Fake Data Generator and Correlation Analysis")
 
 # Upload real data
-st.header("Upload Real Data")
+# st.header("Upload Real Data")
 uploaded_file = st.file_uploader("Upload a CSV file containing the real data", type="csv")
 
 if uploaded_file:
-    # Load the real data
+
     data_filtered = pd.read_csv(uploaded_file)
     st.write("Preview of Real Data:")
     st.dataframe(data_filtered.head())
