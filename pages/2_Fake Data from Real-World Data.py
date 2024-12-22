@@ -85,7 +85,7 @@ st.title("Fake Data Generator and Correlation Analysis")
         # )
 # Toggle for using test data or uploading real data
 use_test_data = st.toggle("Use Test Data", value=False)
-test_data_path = "Altered1TestFinetunded20.csv" 
+test_data_path = "NormalisedFilteredGEOROCData.csv" 
 
 if use_test_data:
     data = pd.read_csv(test_data_path)
