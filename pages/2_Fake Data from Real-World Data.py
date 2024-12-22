@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 st.title("Fake Data Generator and Correlation Analysis")
 st.write('The Fake Data Creator is a tool designed to generate realistic fake geochemical data. It utilises statistical techniques (e.g., mean and covariance calculations) to copy the characteristics of real-world data.')
 use_test_data = st.toggle("Use Test Data", value=False)
-test_data_path = "NormalisedFilteredGEOROCData.csv" 
+test_data_path = "NormalisedandFilteredGEOROCData.csv" 
 
 if use_test_data:
     real_data = pd.read_csv(test_data_path)
