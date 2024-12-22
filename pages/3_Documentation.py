@@ -19,3 +19,4 @@ st.write('2. Click the "Produce Fake Data" button to create fake geochemical dat
 st.write('3. The tool uses statistical techniques (e.g., mean and covariance calculations) to create realistic data for each rock type, maintaining interdependencies and variability.')
 st.write('4. The app calculates and displays correlation matrices for both real and fake data. It also computes the difference between these matrices to validate the quality of the generated fake data.')
 st.write('5. You can then download the fake data in CSV format using the "Download Fake Data as CSV" button.')
+st.write(' :blue[The entire code is available at -add link- ]')
