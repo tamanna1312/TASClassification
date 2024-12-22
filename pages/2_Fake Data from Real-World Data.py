@@ -14,7 +14,7 @@ st.title("Fake Data Generator and Correlation Analysis")
 
 # Upload real data
 # st.header("Upload Real Data")
-uploaded_file = st.file_uploader("Upload a CSV file containing the real data", type="csv")
+uploaded_file = st.file_uploader("Upload your CSV file containing the real data", type="csv")
 
 if uploaded_file:
 
