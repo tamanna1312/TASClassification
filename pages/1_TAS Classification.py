@@ -184,7 +184,7 @@ if use_test_data:
     # st.write("Using test data:")
     # st.write(data.head())
 else:
-    uploaded_file = st.file_uploader(type=["csv"], key="file_uploader_key")
+    uploaded_file = st.file_uploader('Upload csv file' ,type=["csv"], key="file_uploader_key")
     if uploaded_file:
         data = pd.read_csv(uploaded_file)
         st.write("Uploaded Data:")
