@@ -176,8 +176,8 @@ label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanit
                  13: 'Trachydacite', 14: 'Trachyte'}
 
 test_data_path = "Altered1TestFinetunded20.csv"  
-st.write('You can use Test data for demo or upload your own csv file')
-use_test_data = st.toggle("Use test data")
+st.write('You can use test data for demo or upload your own csv file.')
+use_test_data = st.toggle("Test data")
 
 if use_test_data:
     data = pd.read_csv(test_data_path)
