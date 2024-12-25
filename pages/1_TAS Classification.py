@@ -232,6 +232,7 @@ if 'data' in locals():
         #                    file_name='predicted_rock_types.csv',
         #                    mime='text/csv')
         if selected_case == 'All Oxides':
+            st.write('All data on TAS plot:')
             fig, ax = plt.subplots(figsize=(8, 6))
             TAS(ax)
             ax.set_xlim([40, 80])
