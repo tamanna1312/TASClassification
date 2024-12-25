@@ -181,14 +181,13 @@ use_test_data = st.toggle("Test data")
 
 if use_test_data:
     data = pd.read_csv(test_data_path)
-    # st.write("Using test data:")
-    # st.write(data.head())
 else:
     uploaded_file = st.file_uploader('Upload csv file' ,type=["csv"], key="file_uploader_key")
     if uploaded_file:
         data = pd.read_csv(uploaded_file)
         st.write("Uploaded Data:")
         st.write(data.head())
+st.write('Now you can choose the case:')
 if 'data' in locals():
     rock_counts_dict = {}
     case_options = [
