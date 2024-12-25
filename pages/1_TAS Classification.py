@@ -187,7 +187,7 @@ else:
         data = pd.read_csv(uploaded_file)
         st.write("Uploaded Data:")
         st.write(data.head())
-st.write('Now you can choose the case:')
+
 if 'data' in locals():
     rock_counts_dict = {}
     case_options = [
