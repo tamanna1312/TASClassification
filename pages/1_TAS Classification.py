@@ -13,7 +13,7 @@ from sklearn.preprocessing import StandardScaler
 
 #title of the app.
 st.title('TAS Rock Classifier')
-# st.write('The TAS Classifier is a ML tool developed for automatic rock classification based on 10 major and minor oxides. The app provides both classification results and a visualization on a TAS (Total Alkali-Silica) plot.')
+st.write('The TAS Classifier is a ML tool developed for automatic rock classification based on 10 major and minor oxides. The app provides both classification results and a visualization on a TAS (Total Alkali-Silica) plot.')
 
 
 
