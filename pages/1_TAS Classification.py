@@ -270,7 +270,7 @@ if 'data' in locals():
 
                 st.pyplot(fig)
             elif selected_case == 'No Alkali Oxides':
-                 st.write('Total number of data points for each rock type on TAS plot:')
+                st.write('Total number of data points for each rock type on TAS plot:')
                 fig, ax = plt.subplots(figsize=(8, 6))
                 TAS(ax)  
                 ax.set_xlim([40, 80])  
