@@ -14,7 +14,7 @@ def add_logo():
         """
         <style>
             [data-testid="stSidebarNav"] {
-                background-image: url('https://raw.githubusercontent.com/jiexu2776/boron-main/main/images/website-profile.gif');
+                background-image: url('https://raw.githubusercontent.com/jiexu2776/boron-main/main/TASClassifierImage.gif');
                 background-repeat: no-repeat;
                 padding-top: 120px;
                 background-position: 100px 20px;
