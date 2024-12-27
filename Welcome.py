@@ -8,9 +8,9 @@ def add_logo():
             [data-testid="stSidebarNav"] {
                 background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Image.gif');
                 background-repeat: no-repeat;
-                background-size: contain; /* Adjusts image size */
-                background-position: center; /* Centers the image */
-                padding-top: 150px; /* Adjust padding to avoid overlap */
+                background-size: 200px; /* Set the size of the image */
+                background-position: center top; /* Position the image appropriately */
+                padding-top: 200px; /* Add padding to avoid overlap with text */
             }
             [data-testid="stSidebarNav"]::before {
                 content: "Main";
@@ -26,6 +26,7 @@ def add_logo():
     )
 
 add_logo()
+
 
 st.header('Welcome')
 st.subheader('The application contains 2 sections:')
