@@ -6,14 +6,14 @@ def add_logo():
         """
         <style>
             [data-testid="stSidebarNav"] {
-                background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/TASClassifierImage.gif');
+                background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/TASClassifierImage.gif');
                 background-repeat: no-repeat;
                 padding-top: 120px;
                 background-position: 100px 20px;
             }
             [data-testid="stSidebarNav"]::before {
                 content: "Main";
-                margin-left: 100px;
+                margin-left: 10px;
                 margin-top: 10px;
                 font-size: 25px;
                 position: relative;
