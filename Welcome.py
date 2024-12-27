@@ -9,27 +9,34 @@ st.write('-> Based on major and minor oxides.')
 st.subheader(':blue[Generate Fake Data from Real-World Data]')
 st.write('-> Use real-world data to generate fake data that tries to reflect the geochemical relationships within the oxides.')
 
-# st.markdown(
-#     """
-#     <style>
-#         [data-testid=stSidebar] [data-testid=stImage]{
-#             text-align: center;
-#             display: block;
-#             margin-left: auto;
-#             margin-right: auto;
-#             width: 100%;
-#         }
-#     </style>
-#     """, unsafe_allow_html=True
-# )
+def add_logo():
+    st.markdown(
+        """
+        <style>
+            [data-testid="stSidebarNav"] {
+                background-image: url('https://raw.githubusercontent.com/jiexu2776/boron-main/main/images/website-profile.gif');
+                background-repeat: no-repeat;
+                padding-top: 120px;
+                background-position: 100px 20px;
+            }
+            [data-testid="stSidebarNav"]::before {
+                content: "Main";
+                margin-left: 100px;
+                margin-top: 10px;
+                font-size: 25px;
+                position: relative;
+                top: 100px;
 
-# st.sidebar.image(
-#     'Goethe-Logo.gif')
-# Use columns to arrange the text and image side by side
-col1, col2 = st.columns([3, 1])  # Adjust column sizes as needed
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+add_logo()
+col1, col2 = st.columns([3, 1])  
 
 with col1:
-    # Text content in the first column (left)
     pass
 
 with col2:
