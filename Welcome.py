@@ -8,7 +8,7 @@ def add_logo():
             [data-testid="stSidebarNav"] {
                 background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Image2.gif');
                 background-repeat: no-repeat;
-                padding-top: 120px;
+                padding-top: 20px;
                 background-position: 20px 20px;
             }
             [data-testid="stSidebarNav"]::before {
