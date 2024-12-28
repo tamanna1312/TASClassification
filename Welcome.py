@@ -6,19 +6,11 @@ def add_logo():
         """
         <style>
             [data-testid="stSidebarNav"] {
-                background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Image.gif');
+                background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Image2.gif');
                 background-repeat: no-repeat;
-                background-size: 200px; /* Set the size of the image */
-                background-position: center top; /* Position the image appropriately */
-                padding-top: 200px; /* Add padding to avoid overlap with text */
-            }
-            [data-testid="stSidebarNav"]::before {
-                content: "Main";
-                margin-left: 10px;
-                margin-top: 10px;
-                font-size: 25px;
-                position: relative;
-                top: 120px;
+                background-size: 200px; /* Adjust the size as needed */
+                background-position: center top; /* Center the image */
+                padding-top: 200px; /* Add padding below the image */
             }
         </style>
         """,
@@ -26,6 +18,7 @@ def add_logo():
     )
 
 add_logo()
+
 
 
 st.header('Welcome')
