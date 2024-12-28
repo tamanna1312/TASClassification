@@ -6,7 +6,7 @@ def add_logo():
         """
         <style>
             [data-testid="stSidebarNav"] {
-                background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Image2.gif');
+                background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Image.gif');
                 background-repeat: no-repeat;
                 background-size: 200px; /* Adjust the size as needed */
                 background-position: center top; /* Center the image */
