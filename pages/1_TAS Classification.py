@@ -183,7 +183,7 @@ template_file_path = "Template.csv"
 st.download_button(
     label="Download Template",
     data=open(template_file_path, "rb").read(),
-    file_name="geochemical_data_template.csv",
+    file_name="TASClassifierTemplate.csv",
     mime="application/octet-stream"
 )
 
