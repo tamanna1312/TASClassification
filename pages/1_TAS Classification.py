@@ -18,6 +18,7 @@ st.write('The TAS Classifier is a ML tool developed for automatic rock classific
 
 
 
+
 #loading the model for the 3 cases.
 def load_model_for_case(case):
     if case == 'All Oxides':
@@ -177,6 +178,15 @@ label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanit
 
 test_data_path = "Altered1TestFinetunded20.csv"  
 st.write('You can use test data for demo or upload your own csv file.')
+st.write('See template to upload your data.')
+template_file_path = "path_to_your_template/template.csv"
+st.download_button(
+    label="Download Template",
+    data=open(template_file_path, "rb").read(),
+    file_name="geochemical_data_template.csv",
+    mime="application/octet-stream"
+)
+
 use_test_data = st.toggle("Test data")
 
 if use_test_data:
