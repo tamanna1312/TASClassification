@@ -179,7 +179,7 @@ label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanit
 test_data_path = "Altered1TestFinetunded20.csv"  
 st.write('You can use test data for demo or upload your own csv file.')
 st.write('See template to upload your data.')
-template_file_path = "path_to_your_template/template.csv"
+template_file_path = "Template.csv"
 st.download_button(
     label="Download Template",
     data=open(template_file_path, "rb").read(),
