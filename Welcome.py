@@ -33,7 +33,7 @@ st.markdown(
 )
 
 st.sidebar.image(
-    'images/Goethe-Logo.gif')
+    'Goethe-Logo.gif')
 
 
 
