@@ -9,7 +9,7 @@ def add_logo():
                 background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/IMG_3514.jpg');
                 background-repeat: no-repeat;
                 background-size: 150px 150px; /* Set explicit width and height */
-                background-position: 8px 8px; /* Position it in the top left */
+                background-position: 10px 10px; /* Position it in the top left */
                 # margin-top: 20px; /* Add space above */
                 padding-top: 170px; /* Add space below to separate from text */
             }
@@ -24,7 +24,7 @@ st.markdown(
     """
     <style>
         [data-testid=stSidebar] [data-testid=stImage]{
-            text-align: center;
+            text-align: left;
             display: block;
             margin-left: auto;
             margin-right: auto;
