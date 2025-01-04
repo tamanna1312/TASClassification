@@ -39,7 +39,7 @@ st.sidebar.image(
 
 st.subheader("The application contains 2 sections:")
 st.markdown("""
-### :blue[Classify Volcanic Rocks using ML model]
+### :blue[Classify volcanic rocks using ML model]
 - Based on major and minor oxides.
 
 ### :blue[Generate Fake Data from Real-World Data]
