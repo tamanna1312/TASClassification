@@ -26,7 +26,7 @@ st.markdown(
         [data-testid=stSidebar] [data-testid=stImage] {
             text-align: left;
             display: block;
-            width: 100%;
+            width: 70%;
         }
     </style>
     """, unsafe_allow_html=True
