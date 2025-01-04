@@ -39,13 +39,21 @@ st.sidebar.image(
 
 
 
-st.header('Welcome')
-st.subheader('The application contains 2 sections:')
-# st.header(':blue[Using TAS Classifier]')
-st.subheader(':blue[Classify Volcanic Rocks using ML model]')
-st.write('-> Based on major and minor oxides.')
-st.subheader(':blue[Generate Fake Data from Real-World Data]')
-st.write('-> Use real-world data to generate fake data that tries to reflect the geochemical relationships within the oxides.')
+# st.header('Welcome')
+# st.subheader('The application contains 2 sections:')
+# # st.header(':blue[Using TAS Classifier]')
+# st.subheader(':blue[Classify Volcanic Rocks using ML model]')
+# st.write('-> Based on major and minor oxides.')
+# st.subheader(':blue[Generate Fake Data from Real-World Data]')
+# st.write('-> Use real-world data to generate fake data that tries to reflect the geochemical relationships within the oxides.')
+st.subheader("The application contains 2 sections:")
+st.markdown("""
+### :blue[Classify Volcanic Rocks using ML model]
+- Based on major and minor oxides.
+
+### :blue[Generate Fake Data from Real-World Data]
+- Use real-world data to generate fake data that tries to reflect the geochemical relationships within the oxides.
+""")
 
 
 # col1, col2 = st.columns([3, 1])  
