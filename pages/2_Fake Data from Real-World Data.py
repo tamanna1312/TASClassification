@@ -10,8 +10,8 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # App title
-st.title("Fake Data Generator and Correlation Analysis")
-st.write('The Fake Data Creator is a tool designed to generate realistic fake geochemical data. It utilises statistical techniques (e.g., mean and covariance calculations) to copy the characteristics of real-world data.')
+st.title("Synthetic Data Generator and Correlation Analysis")
+st.write('The Synthetic Data Creator is a tool designed to generate realistic fake geochemical data. It utilises statistical techniques (e.g., mean and covariance calculations) to copy the characteristics of real-world data.')
 use_test_data = st.toggle("Use Test Data", value=False)
 test_data_path = "NormalisedandFilteredGEOROCData.csv" 
 
@@ -35,7 +35,7 @@ if 'real_data' in locals():
     if missing_columns:
         st.error(f"The following required columns are missing: {', '.join(missing_columns)}")
     else:
-        if st.button("Produce Fake Data"):
+        if st.button("Produce Synthetic Data"):
             n_samples = 100
             fake_data = []
 
@@ -66,12 +66,12 @@ if 'real_data' in locals():
             axes[0].set_title("Real Data Correlation Matrix")
             
             sns.heatmap(fake_corr, ax=axes[1], cmap="coolwarm", annot=True, fmt=".2f")
-            axes[1].set_title("Fake Data Correlation Matrix")
+            axes[1].set_title("Synthetic Data Correlation Matrix")
             
             st.pyplot(fig)
             
             # Display difference matrix
-            st.subheader("Difference in Correlation Matrices (Real vs Fake)")
+            st.subheader("Difference in Correlation Matrices (Real vs Synthetic)")
             fig_diff, ax_diff = plt.subplots(figsize=(8, 6))
             sns.heatmap(diff_corr, cmap="viridis", annot=True, fmt=".2f", ax=ax_diff)
             ax_diff.set_title("Difference Matrix")
@@ -82,11 +82,11 @@ if 'real_data' in locals():
             st.write(f"**Mean Absolute Difference in Correlations:** {mean_diff:.4f}")
 
             # Provide a download button for fake data
-            st.header("Download Fake Data")
+            st.header("Download Synthetic Data")
             csv = fake_data_combined.to_csv(index=False)
             st.download_button(
-                label="Download Fake Data as CSV",
+                label="Download Synthetic Data as CSV",
                 data=csv,
-                file_name="fake_data.csv",
+                file_name="fSynthetic_data.csv",
                 mime="text/csv"
             )
