@@ -9,8 +9,7 @@ def add_logo():
                 background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/IMG_3514.jpg');
                 background-repeat: no-repeat;
                 background-size: 150px 150px; /* Set explicit width and height */
-                # background-position: 10px 10px; /* Position it in the top left */
-                background-position: center; /* Center the image */
+                background-position: 10px 15px; /* Position it in the top left */
                 # margin-top: 20px; /* Add space above */
                 padding-top: 170px; /* Add space below to separate from text */
             }
