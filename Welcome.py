@@ -10,7 +10,7 @@ def add_logo():
                 background-repeat: no-repeat;
                 background-size: 150px 150px; /* Set explicit width and height */
                 background-position: 10px 10px; /* Position it in the top left */
-                margin-top: 20px; /* Add space above */
+                # margin-top: 20px; /* Add space above */
                 padding-top: 170px; /* Add space below to separate from text */
             }
         </style>
@@ -28,7 +28,7 @@ st.markdown(
             display: block;
             margin-left: auto;
             margin-right: auto;
-            width: 50%;
+            width: 100%;
         }
     </style>
     """, unsafe_allow_html=True
