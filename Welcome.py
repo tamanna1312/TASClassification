@@ -23,34 +23,19 @@ add_logo()
 st.markdown(
     """
     <style>
-        [data-testid=stSidebar] [data-testid=stImage] {
+        [data-testid=stSidebar] [data-testid=stImage]{
             text-align: left;
             display: block;
+            margin-left: auto;
+            margin-right: auto;
             width: 50%;
         }
     </style>
     """, unsafe_allow_html=True
 )
 
-st.sidebar.image('Goethe-Logo.gif')
-
-
-# st.markdown(
-#     """
-#     <style>
-#         [data-testid=stSidebar] [data-testid=stImage]{
-#             text-align: left;
-#             display: block;
-#             margin-left: auto;
-#             margin-right: auto;
-#             width: 50%;
-#         }
-#     </style>
-#     """, unsafe_allow_html=True
-# )
-
-# st.sidebar.image(
-#     'Goethe-Logo.gif')
+st.sidebar.image(
+    'Goethe-Logo.gif')
 
 st.subheader("The application contains 2 sections:")
 st.markdown("""
