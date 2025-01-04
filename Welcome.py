@@ -8,9 +8,10 @@ def add_logo():
             [data-testid="stSidebarNav"] {
                 background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Image.gif');
                 background-repeat: no-repeat;
-                background-size: 200px 200px; /* Adjust width and height to crop the image */
-                background-position: center center; /* Position the image for better alignment */
-                padding-top: 150px; /* Adjust padding to reduce empty space */
+                background-size: contain; /* Keep the aspect ratio intact */
+                background-position: top center; /* Position the image centrally at the top */
+                padding-top: 100px; /* Adjust the padding to balance alignment */
+                padding-bottom: 20px; /* Add a bit of spacing below */
             }
         </style>
         """,
@@ -18,6 +19,7 @@ def add_logo():
     )
 
 add_logo()
+
 
 st.markdown(
     """
