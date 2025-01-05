@@ -29,13 +29,10 @@ st.markdown(
     3. **No Alkali Oxides**: Excludes Na₂O and K₂O.
 
     **Results** 
-    The app validates your data by checking the element oxides requirements, predicts rock types, and then displays:
-       - A table with your dataset and the predicted rock types.
-       - A TAS plot showing the classification visually.
-    # **How to Use**:
-    # 1. Download the Template: A sample template is provided below to help format your dataset correctly.
-    # 2. Upload Your Dataset: Csv file with element oxide data.
-    # 3. Select a Case: Use the radio button to choose between the three supported cases.
+    -  The app validates your data by checking the element oxides requirements, predicts rock types, and then displays:
+       1. A table with your dataset and the predicted rock types.
+       2. A TAS plot showing the classification visually.
+   
     """
 )
 
