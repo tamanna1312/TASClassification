@@ -16,13 +16,13 @@ st.markdown("""
   It is a tool designed to generate syntehtic geochemical data. It utilises statistical techniques (e.g., mean and covariance calculations) to copy the characteristics of real-world data.
 
 - **Results:**  
-  - <span style="color:blue; font-weight:bold;">Correlation Matrices</span>: Displays the relationships between oxides in both real and synthetic data.  
-  * These matrices reveal how different oxides relate to one another. For example:  
-  - A high positive value indicates a strong positive correlation (e.g., when one oxide increases, the other also increases).  
-  - A negative value suggests an inverse relationship. 
+  - **Correlation Matrices**: Displays the relationships between oxides in both real and synthetic data.  
+  1. These matrices reveal how different oxides relate to one another. For example:  
+  2.  A high positive value indicates a strong positive correlation (e.g., when one oxide increases, the other also increases).  
+  3. A negative value suggests an inverse relationship. 
   - **Difference Matrix**: Highlights any deviations between real and synthetic data correlations.  
-  - Smaller differences indicate the synthetic data closely matches the real data's statistical structure.  
-  - Larger differences suggest areas where the generated data diverges from real-world patterns.
+  1. Smaller differences indicate the synthetic data closely matches the real data's statistical structure.  
+  2. Larger differences suggest areas where the generated data diverges from real-world patterns.
   - **Synthetic Dataset**: A downloadable CSV file containing the synthetic geochemical data.  
 """)
 
