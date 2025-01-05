@@ -21,20 +21,20 @@ st.markdown("""
 """)
 
 # Section: Fake Data Creation
-st.header(":blue[Creating Fake Data]")
+st.header(":blue[Creating Synthetic Data]")
 
 st.subheader("Introduction")
 st.markdown("""
-The Fake Data Creation module enables users to create fake geochemical data based on real-world data. Using statistical techniques such as mean and covariance analysis, the app creates realistic geochemical data that mirrors the variability and correlations observed in real samples. Users can visualize correlation matrices for both real and generated data, as well as download the fake data.
+The Synthetic Data Creation module enables users to create fake geochemical data based on real-world data. Using statistical techniques such as mean and covariance analysis, the app creates realistic geochemical data that mirrors the variability and correlations observed in real samples. Users can visualize correlation matrices for both real and generated data, as well as download the fake data.
 """)
 
 st.subheader("How to Use the Program")
 st.markdown("""
 1. **Upload your real-world geochemical data** in CSV format. Ensure it includes oxide values and a rock type column.
-2. **Click the "Produce Fake Data" button** to create fake geochemical data.
-3. The tool uses statistical techniques (e.g., mean and covariance calculations) to create realistic data for each rock type, maintaining interdependencies and variability.
-4. The app calculates and displays correlation matrices for both real and fake data. It also computes the difference between these matrices to validate the quality of the generated fake data.
-5. **Download the fake data** in CSV format using the "Download Fake Data as CSV" button.
+2. **Click the "Produce Synthetic Data" button** to create fake geochemical data.
+3.The tool analyzes the input data and generates synthetic data by replicating the statistical patterns
+4. The tool then calculates and displays correlation matrices for both real and synthetic data. It also computes the difference between these matrices to validate the quality of the generated synthetic data.
+5. **Download the synthetic data** in CSV format using the "Download Synthetic Data as CSV" button.
 """)
 
 # Footer for code link
