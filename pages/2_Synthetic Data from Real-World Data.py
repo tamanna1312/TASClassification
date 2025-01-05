@@ -17,7 +17,7 @@ st.markdown("""
 
 - **Results:**  
   - **Correlation Matrices**: Displays the relationships between oxides in both real and synthetic data.  
-  - These matrices reveal how different oxides relate to one another. For example:  
+  * These matrices reveal how different oxides relate to one another. For example:  
   - A high positive value indicates a strong positive correlation (e.g., when one oxide increases, the other also increases).  
   - A negative value suggests an inverse relationship. 
   - **Difference Matrix**: Highlights any deviations between real and synthetic data correlations.  
