@@ -14,17 +14,13 @@ st.title("Synthetic Data Generator and Correlation Analysis")
 st.markdown("""
 - **What is the Synthetic Data Generator?**  
   It is a tool designed to generate syntehtic geochemical data. It utilises statistical techniques (e.g., mean and covariance calculations) to copy the characteristics of real-world data.
-- **How It Works:**  
-  1. Upload your real-world geochemical dataset in CSV format, including oxide values and a rock type column.  
-  2. The tool analyzes the input data and generates synthetic data by replicating the statistical patterns.  
-  3. The generated data is validated by comparing correlation matrices of the real and fake data.  
-  4. You can download the synthetic dataset as a CSV file.  
 
 - **Outputs:**  
-  - **Correlation Matrices**: Displays the relationships between oxides in both real and generated data.  
+  - **Correlation Matrices**: Displays the relationships between oxides in both real and synthetic data.  
   - **Difference Matrix**: Highlights any deviations between real and synthetic data correlations.  
-  - **Synthetic Dataset**: A downloadable CSV file containing the generated geochemical data.  
+  - **Synthetic Dataset**: A downloadable CSV file containing the synthetic geochemical data.  
 """)
+
 use_test_data = st.toggle("Use Test Data", value=False)
 test_data_path = "NormalisedandFilteredGEOROCData.csv" 
 
