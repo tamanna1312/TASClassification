@@ -29,13 +29,13 @@ st.markdown(
     3. **No Alkali Oxides**: Excludes Na₂O and K₂O.
 
     ### How to Use:
-    1. **Download the Template**: A sample template is provided below to help format your dataset correctly.
-    2. **Upload Your Dataset**: Ensure your file contains oxide values (e.g., SiO₂, MgO, CaO).
-    3. **Select a Case**: Use the radio button to choose between the three supported cases.
-    4. **View the Results**: The app validates your data, predicts rock types, and displays:
+    1. Download the Template: A sample template is provided below to help format your dataset correctly.
+    2. Upload Your Dataset: Csv file with element oxide data.
+    3. Select a Case: Use the radio button to choose between the three supported cases.
+    4. View the Results: The app validates your data, predicts rock types, and displays:
        - A table with your dataset and the predicted rock types.
        - A TAS plot showing the classification visually.
-    5. **Download the Results**: Save the updated dataset, complete with predictions.
+    5. Download the Results: Save the updated dataset, complete with predictions.
     """
 )
 
@@ -198,7 +198,7 @@ label_to_rock = {0: 'Andesite', 1: 'Basalt', 2: 'Basaltic Andesite', 3: 'Basanit
                  13: 'Trachydacite', 14: 'Trachyte'}
 
 test_data_path = "Altered1TestFinetunded20.csv"  
-st.write('You can use test data for demo or upload your own csv file.')
+
 st.write('See template to upload your data.')
 template_file_path = "Template.csv"
 st.download_button(
@@ -207,7 +207,7 @@ st.download_button(
     file_name="TASClassifierTemplate.csv",
     mime="application/octet-stream"
 )
-
+st.write('You can use test data for demo or upload your own csv file.')
 use_test_data = st.toggle("Test data")
 
 if use_test_data:
