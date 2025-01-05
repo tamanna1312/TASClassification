@@ -23,19 +23,19 @@ st.markdown(
     - **Classification Results**: Predicted rock type column in your uploaded data.
     - **Visualization**: Results are plotted on a TAS diagram.
    
-    **Supported Cases**:
+    **Supported Cases**
     1. **All Oxides**: Uses all 10 major and minor oxides.
     2. **No SiO₂**: Excludes SiO₂.
     3. **No Alkali Oxides**: Excludes Na₂O and K₂O.
 
-    **How to Use**:
-    1. Download the Template: A sample template is provided below to help format your dataset correctly.
-    2. Upload Your Dataset: Csv file with element oxide data.
-    3. Select a Case: Use the radio button to choose between the three supported cases.
-    4. View the Results: The app validates your data, predicts rock types, and displays:
+    **Results** 
+    The app validates your data by checking the element oxides requirements, predicts rock types, and then displays:
        - A table with your dataset and the predicted rock types.
        - A TAS plot showing the classification visually.
-    5. Download the Results: Save the updated dataset, complete with predictions.
+    # **How to Use**:
+    # 1. Download the Template: A sample template is provided below to help format your dataset correctly.
+    # 2. Upload Your Dataset: Csv file with element oxide data.
+    # 3. Select a Case: Use the radio button to choose between the three supported cases.
     """
 )
 
