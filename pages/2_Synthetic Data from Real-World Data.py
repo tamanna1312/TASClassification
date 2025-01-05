@@ -17,7 +17,12 @@ st.markdown("""
 
 - **Results:**  
   - **Correlation Matrices**: Displays the relationships between oxides in both real and synthetic data.  
+  - These matrices reveal how different oxides relate to one another. For example:  
+  - A high positive value indicates a strong positive correlation (e.g., when one oxide increases, the other also increases).  
+  - A negative value suggests an inverse relationship. 
   - **Difference Matrix**: Highlights any deviations between real and synthetic data correlations.  
+  - Smaller differences indicate the synthetic data closely matches the real data's statistical structure.  
+  - Larger differences suggest areas where the generated data diverges from real-world patterns.
   - **Synthetic Dataset**: A downloadable CSV file containing the synthetic geochemical data.  
 """)
 
