@@ -23,12 +23,12 @@ st.markdown(
     - **Classification Results**: Predicted rock types based on your uploaded geochemical data.
     - **Visualization**: Results are plotted on a TAS diagram.
    
-    ### Supported Cases:
+    **Supported Cases**:
     1. **All Oxides**: Uses all 10 major and minor oxides.
     2. **No SiO₂**: Excludes SiO₂.
     3. **No Alkali Oxides**: Excludes Na₂O and K₂O.
 
-    ### How to Use:
+    **How to Use**:
     1. Download the Template: A sample template is provided below to help format your dataset correctly.
     2. Upload Your Dataset: Csv file with element oxide data.
     3. Select a Case: Use the radio button to choose between the three supported cases.
