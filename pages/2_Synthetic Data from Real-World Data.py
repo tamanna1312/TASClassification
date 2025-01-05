@@ -15,7 +15,7 @@ st.markdown("""
 - **What is the Synthetic Data Generator?**  
   It is a tool designed to generate syntehtic geochemical data. It utilises statistical techniques (e.g., mean and covariance calculations) to copy the characteristics of real-world data.
 
-- **Outputs:**  
+- **Results:**  
   - **Correlation Matrices**: Displays the relationships between oxides in both real and synthetic data.  
   - **Difference Matrix**: Highlights any deviations between real and synthetic data correlations.  
   - **Synthetic Dataset**: A downloadable CSV file containing the synthetic geochemical data.  
