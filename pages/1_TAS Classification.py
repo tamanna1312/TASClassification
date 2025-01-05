@@ -18,6 +18,7 @@ st.subheader("What is TAS Rock Classifier?")
 st.markdown(
     """
     The **TAS Rock Classifier** is a machine learning (ML) tool designed for the automatic classification of volcanic rocks. 
+
     - **Custom Dataset**: Upload your own geochemical dataset or use the provided template for reference.
     - **Classification Results**: Predicted rock types based on your uploaded geochemical data.
     - **Visualization**: Results are plotted on a TAS diagram.
