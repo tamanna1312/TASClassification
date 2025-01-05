@@ -13,10 +13,31 @@ from sklearn.preprocessing import StandardScaler
 
 #title of the app.
 st.title('TAS Rock Classifier')
-st.subheader('What is TAS Rock Classifier?')
-st.write('The TAS Classifier is a ML tool developed for automatic rock classification based on (i) 10 major and minor oxides, (ii) Data with no SiO₂ and (iii) Data with no alkali oxides. This section provides both classification results in table form and a visualization on a TAS (Total Alkali-Silica) plot.')
+# Introduction section
+st.subheader("What is TAS Rock Classifier?")
+st.markdown(
+    """
+    The **TAS Rock Classifier** is a machine learning (ML) tool designed for the automatic classification of volcanic rocks. 
+    ### Features:
+    - **Custom Dataset**: Upload your own geochemical dataset or use the provided template for reference.
+    - **Classification Results**: Predicted rock types based on your uploaded geochemical data.
+    - **Visualization**: Results are plotted on a TAS diagram for clear interpretation.
+   
+    ### Supported Cases:
+    1. **All Oxides**: Uses all 10 major and minor oxides.
+    2. **No SiO₂**: Excludes SiO₂.
+    3. **No Alkali Oxides**: Excludes Na₂O and K₂O.
 
-
+    ### How to Use:
+    1. **Download the Template**: A sample template is provided below to help format your dataset correctly.
+    2. **Upload Your Dataset**: Ensure your file contains oxide values (e.g., SiO₂, MgO, CaO).
+    3. **Select a Case**: Use the radio button to choose between the three supported cases.
+    4. **View the Results**: The app validates your data, predicts rock types, and displays:
+       - A table with your dataset and the predicted rock types.
+       - A TAS plot showing the classification visually.
+    5. **Download the Results**: Save the updated dataset, complete with predictions.
+    """
+)
 
 
 #loading the model for the 3 cases.
