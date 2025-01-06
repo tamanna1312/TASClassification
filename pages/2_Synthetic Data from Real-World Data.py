@@ -27,7 +27,7 @@ st.markdown("""
 """)
 
 use_test_data = st.toggle("Use Test Data", value=False)
-test_data_path = "NormalisedFilteredGEOROCData.csv" 
+test_data_path = "NormalisedFilteredGEOROCData.csv"
 
 if use_test_data:
     real_data = pd.read_csv(test_data_path)
