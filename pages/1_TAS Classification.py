@@ -11,12 +11,41 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import LeakyReLU  
 from sklearn.preprocessing import StandardScaler
 
-from utils import add_logo, add_sidebar_image
+def add_logo():
+    st.markdown(
+        """
+        <style>
+            [data-testid="stSidebarNav"] {
+                background-image: url('https://raw.githubusercontent.com/tamanna1312/TASClassification/main/Applogo.jpg');
+                background-repeat: no-repeat;
+                background-size: 150px 150px; /* Set explicit width and height */
+                background-position: 30px 10px; /* Position it in the top left */
+                # margin-top: 20px; /* Add space above */
+                padding-top: 170px; /* Add space below to separate from text */
+            }
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
 
-# Add sidebar logo and image
 add_logo()
-add_sidebar_image()
 
+st.markdown(
+    """
+    <style>
+        [data-testid=stSidebar] [data-testid=stImage]{
+            text-align: center;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+    </style>
+    """, unsafe_allow_html=True
+)
+
+st.sidebar.image(
+    'Goethe-Logo.gif')
 
 #title of the app.
 st.title('TAS Rock Classifier')
