@@ -11,6 +11,12 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import LeakyReLU  
 from sklearn.preprocessing import StandardScaler
 
+from utils import add_logo, add_sidebar_image
+
+# Add sidebar logo and image
+add_logo()
+add_sidebar_image()
+
 
 #title of the app.
 st.title('TAS Rock Classifier')
