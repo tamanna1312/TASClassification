@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import LeakyReLU  
 from sklearn.preprocessing import StandardScaler
+
+
 def add_logo():
     st.markdown(
         """
