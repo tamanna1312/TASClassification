@@ -42,6 +42,6 @@ st.markdown("""
 ### :blue[Classify volcanic rocks using ML model]
 - Based on major and minor oxides.
 
-### :blue[Generate Syntehtic Data from Real-World Data]
-- Use real-world data to generate syntehtic data that tries to reflect the geochemical relationships within the oxides.
+### :blue[Generate Synthetic Data from Real-World Data]
+- Use real-world data to generate synthetic data that tries to reflect the geochemical relationships within the oxides.
 """)
