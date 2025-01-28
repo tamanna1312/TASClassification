@@ -237,12 +237,6 @@ template_file_path = "Template.csv"
 template_data = pd.read_csv(template_file_path)
 with st.expander("View Template File"):
     st.dataframe(template_data)
-# st.download_button(
-#     label="Download Template",
-#     data=open(template_file_path, "rb").read(),
-#     file_name="TASClassifierTemplate.csv",
-#     mime="application/octet-stream"
-# )
 st.write('You can use test data for demo or upload your own csv file.')
 use_test_data = st.toggle("Test data")
 
